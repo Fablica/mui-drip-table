@@ -1,9 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+
+/** material-ui */
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
 
+
+/** デフォルトスタイル */
 const defaultBodyRowStyles = {
   root: {},
   responsiveStacked: {
@@ -15,11 +19,11 @@ const defaultBodyRowStyles = {
 
 class DripTableBodyRow extends React.Component {
   static propTypes = {
-    /** Options used to describe table */
+    /** オプション一覧 */
     options: PropTypes.object.isRequired,
-    /** Current row selected or not */
+    /** 行選択フラグ */
     rowSelected: PropTypes.bool,
-    /** Extend the style applied to components */
+    /** スタイル */
     classes: PropTypes.object,
   };
 
