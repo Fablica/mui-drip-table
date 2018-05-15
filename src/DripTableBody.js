@@ -1,12 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/** material-ui */
 import Typography from "@material-ui/core/Typography";
 import TableBody from "@material-ui/core/TableBody";
+
+/** custom */
 import DripTableBodyCell from "./DripTableBodyCell";
 import DripTableBodyRow from "./DripTableBodyRow";
 import DripTableSelectCell from "./DripTableSelectCell";
 import { withStyles } from "@material-ui/core/styles";
 
+
+/** デフォルトスタイル */
 const defaultBodyStyles = {
   root: {},
   emptyTitle: {
@@ -16,30 +22,40 @@ const defaultBodyStyles = {
 
 class DripTableBody extends React.Component {
   static propTypes = {
-    /** Data used to describe table */
+    /** 使用データ */
     data: PropTypes.array.isRequired,
-    /** Columns used to describe table */
+    /** カラム一覧 */
     columns: PropTypes.array.isRequired,
-    /** Options used to describe table */
+    /** オプション一覧 */
     options: PropTypes.object.isRequired,
-    /** Data used to filter table against */
+    /** フィルター一覧 */
     filterList: PropTypes.array,
-    /** Table rows selected */
+    /** 選択行一覧 */
     selectedRows: PropTypes.array,
-    /** Callback to trigger table row select */
+    /** 行選択実行時、更新処理 */
     selectRowUpdate: PropTypes.func,
-    /** Data used to search table against */
+    /** 検索文字列 */
     searchText: PropTypes.string,
-    /** Extend the style applied to components */
+    /** スタイリング文字列 */
     classes: PropTypes.object,
   };
 
+  /** 行作成処理 */
   buildRows() {
     const { data, page, rowsPerPage } = this.props;
 
     let rows = [];
+    /** 合計ページ数(切り上) */
     const totalPages = Math.floor(data.length / rowsPerPage);
+    /**
+     * 現在のページ
+     * 表示ページ × 表示行数 = 表示するデータのインデックス(from)
+     */
     const fromIndex = page === 0 ? 0 : page * rowsPerPage;
+    /**
+     * 次ページ
+     * 表示ページ × 表示行数 = 表示するデータのインデックス(to)
+     */
     const toIndex = Math.min(data.length, (page + 1) * rowsPerPage);
 
     if (page > totalPages && totalPages !== 0) {
@@ -52,6 +68,10 @@ class DripTableBody extends React.Component {
       );
     }
 
+    /** 
+     * 行作成 
+     * 使用データのインデックス(from) 〜 インデックス(to)までのデータを取得
+    */
     for (let rowIndex = fromIndex; rowIndex < data.length && rowIndex < toIndex; rowIndex++) {
       rows.push(data[rowIndex]);
     }
@@ -59,18 +79,31 @@ class DripTableBody extends React.Component {
     return rows.length ? rows : null;
   }
 
+  /**
+   * rowsデータのdata内でのインデックスを取得
+   * @param {number} index rowsインデックスを取得
+   */
   getRowIndex(index) {
     const { page, rowsPerPage } = this.props;
+    /** ページ番号 × 表示行数 */
     const startIndex = page === 0 ? 0 : page * rowsPerPage;
 
     return startIndex + index;
   }
 
+  /**
+   * 行選択true、false設定
+   * @param {number} index rowsインデックスを取得
+   */
   isRowSelected(index) {
     const { selectedRows } = this.props;
     return selectedRows.indexOf(this.getRowIndex(index)) >= 0 ? true : false;
   }
 
+  /**
+   * 行選択時、対象のインデックスを
+   * 選択行リストに対して削除または追加
+   */
   handleRowSelect = index => {
     this.props.selectRowUpdate("cell", this.getRowIndex(index));
   };

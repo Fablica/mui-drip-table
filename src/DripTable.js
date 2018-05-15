@@ -546,8 +546,10 @@ class DripTable extends React.Component {
           let selectedRows = [...prevState.selectedRows];
           const rowPos = selectedRows.indexOf(value);
 
+          /** 行選択リストに存在する場合、リストから削除 */
           if (rowPos >= 0) {
             selectedRows.splice(rowPos, 1);
+          /** 行選択リストに存在しない場合、リストに追加 */
           } else {
             selectedRows.push(value);
           }
