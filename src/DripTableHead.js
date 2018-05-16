@@ -43,7 +43,9 @@ class DripTableHead extends React.Component {
   };
 
   /**
-   * 行選択時、
+   * 全件(行)選択時、
+   * ON ：選択リストにページ内のデータインデックスを追加する。
+   * OFF：選択リストからページ内のデータインデックスを削除する。
    */
   handleRowSelect = () => {
     this.setState(
@@ -54,6 +56,10 @@ class DripTableHead extends React.Component {
     );
   };
 
+  /**
+   * 行選択フラグを更新
+   * 削除実行後はfalseが設定される
+   */
   handleUpdateCheck = status => {
     this.setState(() => ({
       selectChecked: status,

@@ -492,15 +492,23 @@ class DripTable extends React.Component {
     );
   };
 
+  /**
+   * 選択行削除処理
+   * 行選択時ツールバーに設定するfunc
+   */
   selectRowDelete = () => {
+    // 選択行リストのインデックスデータを利用データから除外
     const cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
 
+    // オプションに処理を設定している場合、後続処理を実行
     if (this.options.onRowsDelete) {
       this.options.onRowsDelete(this.state.selectedRows);
     }
 
+    // 行選択フラグにfalseを設定
     this.updateToolbarSelect(false);
 
+    // データの更新
     this.setTableData({
       columns: this.props.columns,
       data: cleanRows,
@@ -528,14 +536,18 @@ class DripTable extends React.Component {
             .fill()
             .map((d, i) => i + fromIndex);
 
-          // 
+          /**
+           *  @TODO
+           * 不具合【No.1】
+           * 不具合【No.2】
+           */
+          // 選択行に現在ぺージのインデックスを追加
           let newRows = [...prevState.selectedRows, ...selectedRows];
-          //デバッグ
-          console.log()
+
+          // 全体選択のチェックを外した場合はindexの値を削除
           if (value === false) {
             newRows = prevState.selectedRows.filter(val => selectedRows.indexOf(val) === -1);
           }
-
           return {
             curSelectedRows: selectedRows,
             selectedRows: newRows,

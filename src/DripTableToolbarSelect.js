@@ -33,6 +33,10 @@ const defaultToolbarSelectStyles = {
   },
 };
 
+/**
+ * 行選択時、表示するツールバー
+ * Deleteアイコンを表示
+ */
 class DripTableToolbarSelect extends React.Component {
   static propTypes = {
     /** Options used to describe table */
