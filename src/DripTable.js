@@ -511,20 +511,27 @@ class DripTable extends React.Component {
   };
 
   selectRowUpdate = (type, value) => {
+    /** テーブルヘッダー処理 */
     if (type === "head") {
       this.setState(
         prevState => {
           const { data, page } = prevState;
+          // 画面上で、表示行数の変更がある場合、その値を、ない場合はデフォルトを使用
           const rowsPerPage = prevState.rowsPerPage ? prevState.rowsPerPage : this.options.rowsPerPage;
 
+          // 表示するデータのFROMインデックスを設定(現在ページ)
           const fromIndex = page === 0 ? 0 : page * rowsPerPage;
+          // 表示するページのTOインデックスを設定(現在ページ)
           const toIndex = Math.min(data.length, (page + 1) * rowsPerPage);
+          // 表示データ分の配列を作成
           let selectedRows = Array(toIndex - fromIndex)
             .fill()
             .map((d, i) => i + fromIndex);
 
+          // 
           let newRows = [...prevState.selectedRows, ...selectedRows];
-
+          //デバッグ
+          console.log()
           if (value === false) {
             newRows = prevState.selectedRows.filter(val => selectedRows.indexOf(val) === -1);
           }
@@ -534,6 +541,7 @@ class DripTable extends React.Component {
             selectedRows: newRows,
           };
         },
+        // 処理を実装している場合、処理を実行
         () => {
           if (this.options.onRowsSelect) {
             this.options.onRowsSelect(this.state.curSelectedRows, this.state.selectedRows);

@@ -1,11 +1,16 @@
 import React from "react";
 import classNames from "classnames";
+
+/** material-ui */
 import TableHead from "@material-ui/core/TableHead";
+import { withStyles } from "@material-ui/core/styles";
+
+/** custom */
 import DripTableHeadRow from "./DripTableHeadRow";
 import DripTableHeadCell from "./DripTableHeadCell";
 import DripTableSelectCell from "./DripTableSelectCell";
-import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 const defaultHeadStyles = {
   main: {},
   responsiveStacked: {
@@ -17,14 +22,19 @@ const defaultHeadStyles = {
 
 class DripTableHead extends React.Component {
   state = {
-    activeColumn: null,
-    selectChecked: false,
+    activeColumn: null,    // 初期状態：選択状態カラム無
+    selectChecked: false,  // 初期状態：Deleteモード無
   };
 
   componentDidMount() {
     this.props.handleHeadUpdateRef(this.handleUpdateCheck);
   }
 
+  /**
+   *  カラム選択時ソート処理
+   * 選択したカラムのインデックスを設定
+   * 設定後、ソートキーに設定
+   */
   handleToggleColumn = index => {
     this.setState(() => ({
       activeColumn: index,
@@ -32,6 +42,9 @@ class DripTableHead extends React.Component {
     this.props.toggleSort(index);
   };
 
+  /**
+   * 行選択時、
+   */
   handleRowSelect = () => {
     this.setState(
       prevState => ({
