@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/** material-ui */
 import TableRow from "@material-ui/core/TableRow";
 import TableFooter from "@material-ui/core/TableFooter";
 import TablePagination from "@material-ui/core/TablePagination";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 const defaultPaginationStyles = {
   root: {
     "&:last-child": {
@@ -27,22 +30,30 @@ const defaultPaginationStyles = {
 
 class DripTablePagination extends React.Component {
   static propTypes = {
-    /** Total number of table rows */
+    /** 行の合計値 */
     count: PropTypes.number.isRequired,
-    /** Options used to describe table */
+    /** オプション一覧 */
     options: PropTypes.object.isRequired,
-    /** Current page index */
+    /** 現在のページ番号 */
     page: PropTypes.number.isRequired,
-    /** Total number allowed of rows per page */
+    /** １ページ当たりの表示行数 */
     rowsPerPage: PropTypes.number.isRequired,
-    /** Callback to trigger rows per page change */
+    /** 表示行数変更時アクション */
     changeRowsPerPage: PropTypes.func.isRequired,
   };
 
+  /**
+   * 表示行数変更時
+   * 表示行数の更新
+   */
   handleRowChange = event => {
     this.props.changeRowsPerPage(event.target.value);
   };
 
+  /**
+   * ページ切り替え時
+   * 現在ページの更新
+   */
   handlePageChange = (_, page) => {
     this.props.changePage(page);
   };

@@ -1,11 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+
+/** material-ui */
 import TableCell from "@material-ui/core/TableCell";
 import TableSortLabel from "@material-ui/core/TableSortLabel";
 import Tooltip from "@material-ui/core/Tooltip";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 const defaultHeadCellStyles = {
   tooltip: {
     cursor: "pointer",
@@ -37,22 +40,26 @@ const defaultHeadCellStyles = {
 
 class DripTableHeadCell extends React.Component {
   static propTypes = {
-    /** Extend the style applied to components */
+    /** スタイル */
     classes: PropTypes.object,
-    /** Options used to describe table */
+    /** オプション一覧 */
     options: PropTypes.object.isRequired,
-    /** Current sort direction */
+    /** ソートキー( asc | desc ) */
     sortDirection: PropTypes.string,
-    /** Callback to trigger column sort */
+    /** ソートアクション */
     toggleSort: PropTypes.func.isRequired,
   };
 
+  /** ヘッダーカラムクリック時
+   *  ソートアクション実行
+   */
   handleSortClick = () => {
     this.props.toggleSort(this.props.index);
   };
 
   render() {
     const { children, classes, options, sortDirection } = this.props;
+    // ソート有効フラグ
     const sortActive = sortDirection !== null && sortDirection !== undefined ? true : false;
 
     const sortLabelProps = {

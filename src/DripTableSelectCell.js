@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/** material-ui */
 import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 const defaultSelectCellStyles = {
   root: {
     "@media screen and (max-width: 960px)": {
@@ -21,11 +24,11 @@ const defaultSelectCellStyles = {
 
 class DripTableSelectCell extends React.Component {
   static propTypes = {
-    /** Select cell checked on/off */
+    /** 行選択フラグON、OFF */
     checked: PropTypes.bool.isRequired,
-    /** Callback to trigger cell update */
+    /** 親要素からのfuncを実装 */
     onChange: PropTypes.func,
-    /** Extend the style applied to components */
+    /** スタイル */
     classes: PropTypes.object,
   };
 

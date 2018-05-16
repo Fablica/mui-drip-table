@@ -411,11 +411,17 @@ class DripTable extends React.Component {
     );
   };
 
+  /**
+   * 表示行数変更時
+   * 表示行数の更新
+   * rows: 画面上で選択した行数
+   */
   changeRowsPerPage = rows => {
     this.setState(
       () => ({
         rowsPerPage: rows,
       }),
+      // オプションで設定されたfuncを実行
       () => {
         if (this.options.onChangeRowsPerPage) {
           this.options.onChangeRowsPerPage(this.state.rowsPerPage);
@@ -424,11 +430,17 @@ class DripTable extends React.Component {
     );
   };
 
+  /**
+   * ページ切り替え時
+   * 現在ページ番号の更新
+   * page: 現在のページ番号
+   */
   changePage = page => {
     this.setState(
       () => ({
         page: page,
       }),
+      // オプションで設定されたfuncを実行
       () => {
         if (this.options.onChangePage) {
           this.options.onChangePage(this.state.page);
@@ -524,29 +536,41 @@ class DripTable extends React.Component {
       this.setState(
         prevState => {
           const { data, page } = prevState;
-          // 画面上で、表示行数の変更がある場合、その値を、ない場合はデフォルトを使用
+          // 画面上で、表示行数の変更がある場合はその値を、ない場合はデフォルトを使用
           const rowsPerPage = prevState.rowsPerPage ? prevState.rowsPerPage : this.options.rowsPerPage;
 
-          // 表示するデータのFROMインデックスを設定(現在ページ)
-          const fromIndex = page === 0 ? 0 : page * rowsPerPage;
-          // 表示するページのTOインデックスを設定(現在ページ)
-          const toIndex = Math.min(data.length, (page + 1) * rowsPerPage);
-          // 表示データ分の配列を作成
-          let selectedRows = Array(toIndex - fromIndex)
+          // 不具合【No.1】add
+          //// 表示するデータのFROMインデックスを設定(現在ページ)
+          //const fromIndex = page === 0 ? 0 : page * rowsPerPage;
+          //// 表示するページのTOインデックスを設定(現在ページ)
+          //const toIndex = Math.min(data.length, (page + 1) * rowsPerPage);
+          //// 表示データ分の配列を作成
+          //let selectedRows = Array(toIndex - fromIndex)
+          //  .fill()
+          //  .map((d, i) => i + fromIndex);
+
+          let selectedRows = Array(data.length)
             .fill()
-            .map((d, i) => i + fromIndex);
+            .map((d, i) => i);
+          // 不具合【No.1】end
 
           /**
            *  @TODO
            * 不具合【No.1】
            * 不具合【No.2】
            */
-          // 選択行に現在ぺージのインデックスを追加
-          let newRows = [...prevState.selectedRows, ...selectedRows];
+          // 不具合【No.1】start
+          //// 選択行に現在ぺージのインデックスを追加
+          //let newRows = [...prevState.selectedRows, ...selectedRows];
+          let newRows = [...selectedRows];
+          // 不具合【No.1】end
 
           // 全体選択のチェックを外した場合はindexの値を削除
           if (value === false) {
-            newRows = prevState.selectedRows.filter(val => selectedRows.indexOf(val) === -1);
+            // 不具合【No.1】add
+            //newRows = prevState.selectedRows.filter(val => selectedRows.indexOf(val) === -1);
+            newRows = [];
+            // 不具合【No.1】end
           }
           return {
             curSelectedRows: selectedRows,
