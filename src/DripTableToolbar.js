@@ -1,21 +1,26 @@
 import React from "react";
+import ReactToPrint from "react-to-print";
+
+/** material-ui */
 import Typography from "@material-ui/core/Typography";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import IconButton from "@material-ui/core/IconButton";
-import { DripPopover, DripPopoverTarget, DripPopoverContent } from "./DripPopover";
-import DripTableFilter from "./DripTableFilter";
-import DripTableViewCol from "./DripTableViewCol";
-import DripTableSearch from "./DripTableSearch";
 import SearchIcon from "@material-ui/icons/Search";
 import DownloadIcon from "@material-ui/icons/FileDownload";
 import PrintIcon from "@material-ui/icons/Print";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 import FilterIcon from "@material-ui/icons/FilterList";
 import merge from "lodash.merge";
-import ReactToPrint from "react-to-print";
+
+/** custom */
+import { DripPopover, DripPopoverTarget, DripPopoverContent } from "./DripPopover";
+import DripTableFilter from "./DripTableFilter";
+import DripTableViewCol from "./DripTableViewCol";
+import DripTableSearch from "./DripTableSearch";
 import { getStyle, DataStyles } from "./DataStyles";
 
+/** デフォルトスタイル */
 export const defaultToolbarStyles = {
   root: {},
   left: {
@@ -42,6 +47,7 @@ export const defaultToolbarStyles = {
   },
 };
 
+/** レスポンシブスタイル */
 export const responsiveToolbarStyles = {
   "@media screen and (max-width: 960px)": {
     titleRoot: {},

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+
+/** material-ui */
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -13,6 +15,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 export const defaultFilterStyles = {
   root: {
     padding: "16px 24px 16px 24px",
