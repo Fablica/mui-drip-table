@@ -543,26 +543,39 @@ class DripTable extends React.Component {
           let selectedRows = Array(data.length)
             .fill()
             .map((d, i) => i);
-
           // @TODO 不具合対応No1~2
           // No2 add
-          /*
+          let filteredList = [];
           selectedRows.forEach(
-            function(index) {
-              if(!columns[index].filter) {
-                 
+            function(rowIndex) {
+              prevState.data[rowIndex].forEach(
+                function(columnIndex) {
+                  console.log(columnIndex);
+                  if (prevState.filteredList){
+                    // 存在する
+                  }
+                  filteredList.push(columnIndex);
               }
-            }
-          )
-          */
-          // No2 end
-          // 全件データを設定
-          let newRows = [...selectedRows];
-
-          // 全体選択のチェックを外した場合はindexの値を削除
-          if (value === false) {
-            newRows = [];
+            );
           }
+          );
+          let newRows = [];
+          if (value === false) {
+          // 全体選択のチェックを外した場合はindexの値を削除
+            newRows = [];
+
+          } else if(filteredList.length >= 1) {
+            // フィルタリングデータのみ設定
+            console.log("デバッグ");
+            console.log(filteredList);
+            console.log("デバッグ");
+            newRows = filteredList;
+
+          } else {
+            // 全件データを設定
+            newRows = selectedRows;
+          }
+          // No2 end
           return {
             curSelectedRows: selectedRows,
             selectedRows: newRows,
