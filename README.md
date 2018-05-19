@@ -47,7 +47,7 @@ npm install @material-ui/core @material-ui/icons
 |**`title`**|array|テーブルタイトル。
 |**`columns`**|array|テーブルヘッダー。文字列の配列または、オプションを含むオブジェクト。
 |**`data`**|array|テーブルデータ。文字列の配列。
-|**`options`**|object|テーブル機能の制御を設定。下記オプション項目を参照。
+|**`options`**|object|テーブル機能の制御を設定。
 
 #### Options:
 |Name|Type|Default|Description
@@ -75,3 +75,17 @@ npm install @material-ui/core @material-ui/icons
 |**`onFilterChange`**|function||フィルター設定変更時の後続処理を設定。
 |**`onColumnSortChange`**|function||ソート実行時の後続処理を設定。
 |**`onColumnViewChange`**|function||表示カラムの変更後の後続処理を設定。
+
+#### Column:
+|Name|Type|Description
+|:--:|:-----|:-----|
+|**`Name`**|string|テーブルヘッダーに表示されるカラム名
+|**`options`**|object|テーブル機能の制御を設定。下記オプション項目を参照。
+
+#### Column Options:
+|Name|Type|Default|Description
+|:--:|:-----|:--|:-----|
+|**`display`**|boolean|true|カラム表示の有効・無効。
+|**`filter`**|boolean|true|フィルター機能の有効・無効。
+|**`sort`**|boolean|true|ソート機能の有効・無効。
+|**`customRender`**|function||ヘッダー表示時の処理を設定。
