@@ -59,7 +59,7 @@ npm install @material-ui/core @material-ui/icons
 |**`caseSensitive `**|boolean|false|検索アクション実行時、大文字と小文字の区別の有効・無効。
 |**`responsive`**|string|'stacked'|ヘッダーのタイプを指定。 "stacked"、"scroll"の2種類
 |**`rowsPerPage`**|number|10|1ページ当たりの最大表示行数。
-|**`rowsPerPageOptions`**|array|[10,15,20]|表示行数選択項目。
+|**`rowsPerPageOptions`**|array|[5,10,15,100]|表示行数選択項目。
 |**`rowHover`**|boolean|true|行のホバー有効・無効。
 |**`sortFilterList`**|boolean|true|フィルタリストのソート有効・無効。
 |**`sort`**|boolean|true|列のソート有効・無効。
