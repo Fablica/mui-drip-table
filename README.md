@@ -1,6 +1,8 @@
 # mui-drip-table
 ### material-uiを使用したフルスタックテーブルコンポーネント
 
+*****
+
 ### インストール
 ・パッケージ本体
 ```sh
@@ -11,8 +13,12 @@ npm install mui-drip-table
 npm install @material-ui/core @material-ui/icons
 ```
 
+*****
+
 ### デモページ
 ・[demo](https://kento75.github.io/mui-drip-table-demo)
+
+*****
 
 ### 機能
 ・テーブル一覧表示  
