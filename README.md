@@ -16,7 +16,9 @@ npm install @material-ui/core @material-ui/icons
 *****
 
 ### デモページ
-・[demo](https://kento75.github.io/mui-drip-table-demo)
+・[demo](https://kento75.github.io/mui-drip-table-demo)  
+  
+・[sample code](https://github.com/Kento75/mui-drip-table-demo)
 
 *****
 
