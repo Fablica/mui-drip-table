@@ -11,7 +11,6 @@ import DripTableBodyRow from "./DripTableBodyRow";
 import DripTableSelectCell from "./DripTableSelectCell";
 import { withStyles } from "@material-ui/core/styles";
 
-
 /** デフォルトスタイル */
 const defaultBodyStyles = {
   root: {},
@@ -68,10 +67,10 @@ class DripTableBody extends React.Component {
       );
     }
 
-    /** 
-     * 行作成 
+    /**
+     * 行作成
      * 使用データのインデックス(from) 〜 インデックス(to)までのデータを取得
-    */
+     */
     for (let rowIndex = fromIndex; rowIndex < data.length && rowIndex < toIndex; rowIndex++) {
       rows.push(data[rowIndex]);
     }

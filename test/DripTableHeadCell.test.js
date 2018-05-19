@@ -20,12 +20,7 @@ describe("<DripTableHeadCell />", function() {
     const toggleSort = () => {};
 
     const shallowWrapper = shallow(
-      <DripTableHeadCell
-        options={options}
-        sortDirection={"asc"}
-        sort={true}
-        toggleSort={toggleSort}
-        classes={classes}>
+      <DripTableHeadCell options={options} sortDirection={"asc"} sort={true} toggleSort={toggleSort} classes={classes}>
         some content
       </DripTableHeadCell>,
     ).dive();
@@ -39,12 +34,7 @@ describe("<DripTableHeadCell />", function() {
     const toggleSort = () => {};
 
     const shallowWrapper = shallow(
-      <DripTableHeadCell
-        options={options}
-        sortDirection={"asc"}
-        sort={true}
-        toggleSort={toggleSort}
-        classes={classes}>
+      <DripTableHeadCell options={options} sortDirection={"asc"} sort={true} toggleSort={toggleSort} classes={classes}>
         some content
       </DripTableHeadCell>,
     );

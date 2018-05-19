@@ -22,8 +22,8 @@ const defaultHeadStyles = {
 
 class DripTableHead extends React.Component {
   state = {
-    activeColumn: null,    // 初期状態：選択状態カラム無
-    selectChecked: false,  // 初期状態：Deleteモード無
+    activeColumn: null, // 初期状態：選択状態カラム無
+    selectChecked: false, // 初期状態：Deleteモード無
   };
 
   componentDidMount() {

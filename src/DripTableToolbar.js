@@ -101,7 +101,6 @@ class DripTableToolbar extends React.Component {
   // TODO
   // CSVに出力するデータはviewColumnsがtrueのものだけにする
   handleCSVDownload = () => {
-    
     const { data, columns } = this.props;
     const CSVHead = columns.reduce((soFar, column) => soFar + '"' + column.name + '",', "").slice(0, -1) + "\r\n";
     const CSVBody = data.reduce((soFar, row) => soFar + '"' + row.join('","') + '"\r\n', []).trim();
@@ -158,10 +157,7 @@ class DripTableToolbar extends React.Component {
     const { showSearch } = this.state;
 
     return (
-      <DataStyles
-        defaultStyles={this.tbarStyles}
-        name="DripTableToolbar"
-        styles={getStyle(options, "table.toolbar")}>
+      <DataStyles defaultStyles={this.tbarStyles} name="DripTableToolbar" styles={getStyle(options, "table.toolbar")}>
         {toolbarStyles => (
           <Toolbar className={toolbarStyles.root} role={"toolbar"} aria-label={"Table Toolbar"}>
             <div className={toolbarStyles.left}>

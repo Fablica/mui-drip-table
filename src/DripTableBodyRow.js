@@ -6,7 +6,6 @@ import classNames from "classnames";
 import TableRow from "@material-ui/core/TableRow";
 import { withStyles } from "@material-ui/core/styles";
 
-
 /** デフォルトスタイル */
 const defaultBodyRowStyles = {
   root: {},

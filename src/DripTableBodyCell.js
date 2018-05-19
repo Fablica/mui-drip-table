@@ -5,7 +5,6 @@ import classNames from "classnames";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";
 
-
 /** デフォルトスタイル */
 const defaultBodyCellStyles = {
   root: {},

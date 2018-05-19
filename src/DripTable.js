@@ -168,7 +168,7 @@ class DripTable extends React.Component {
       caseSensitive: false,
       rowHover: true,
       rowsPerPage: 10,
-      rowsPerPageOptions: [ 5, 10, 15, 100],
+      rowsPerPageOptions: [5, 10, 15, 100],
       filter: true,
       sortFilterList: true,
       sort: true,
@@ -535,50 +535,52 @@ class DripTable extends React.Component {
     if (type === "head") {
       this.setState(
         prevState => {
-            const { data } = prevState;
+          const { data } = prevState;
 
           // データ全件を設定(index)
-          let selectedRows = Array(data.length).fill().map((d, i) => i);
+          let selectedRows = Array(data.length)
+            .fill()
+            .map((d, i) => i);
 
           // ディスプレイに表示されているデータの一覧を取得
-          let displayDataList = 
-            this.getDisplayData(prevState.columns, prevState.data, prevState.filterList, prevState.searchText);
+          let displayDataList = this.getDisplayData(
+            prevState.columns,
+            prevState.data,
+            prevState.filterList,
+            prevState.searchText,
+          );
 
-          // フィルタリングされているかのチェック  
+          // フィルタリングされているかのチェック
           let filteringFlg = false;
           prevState.filterList.forEach(function(clmFilter) {
-            if(clmFilter.length >= 1) filteringFlg = true;
+            if (clmFilter.length >= 1) filteringFlg = true;
           });
 
           // フィルタリングされている場合、
           // フィルタリングされた値でリストを作成
           let filteredList = [];
-          if(filteringFlg) {
-            displayDataList.forEach(
-              function(rowValue) {
-                console.log("行データ：" + rowValue);
-                prevState.data.forEach(
-                  function(rawData, i) {
-                    console.log("bool：" + (rawData.toString() == rowValue.toString()));
-                    console.log("フィルタリングリスト：" + filteredList);
-                    if(rawData.toString() == rowValue.toString()) filteredList.push(i);
-                  }
-                );
-              }
-            );
+          if (filteringFlg) {
+            displayDataList.forEach(function(rowValue) {
+              console.log("行データ：" + rowValue);
+              prevState.data.forEach(function(rawData, i) {
+                console.log("bool：" + (rawData.toString() == rowValue.toString()));
+                console.log("フィルタリングリスト：" + filteredList);
+                if (rawData.toString() == rowValue.toString()) filteredList.push(i);
+              });
+            });
           }
 
           // 新しい選択行リスト
           let newRows = [];
           if (value === false) {
-          // 全体選択のチェックを外した場合はindexの値を削除
+            // 全体選択のチェックを外した場合はindexの値を削除
             newRows = [];
 
-          // フィルタリングしている場合、フィルタリングされたデータのみ
-          } else if(filteringFlg) {
+            // フィルタリングしている場合、フィルタリングされたデータのみ
+          } else if (filteringFlg) {
             newRows = filteredList;
 
-          // フィルタリングしていない場合、全件
+            // フィルタリングしていない場合、全件
           } else {
             newRows = selectedRows;
           }
@@ -603,7 +605,7 @@ class DripTable extends React.Component {
           /** 行選択リストに存在する場合、リストから削除 */
           if (rowPos >= 0) {
             selectedRows.splice(rowPos, 1);
-          /** 行選択リストに存在しない場合、リストに追加 */
+            /** 行選択リストに存在しない場合、リストに追加 */
           } else {
             selectedRows.push(value);
           }
