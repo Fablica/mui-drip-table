@@ -33,3 +33,45 @@ npm install @material-ui/core @material-ui/icons
 ・削除  
 ・CSVダウンロード  
 ・プリント  
+
+*****
+
+### API
+
+#### &lt;DripTable />
+
+サポートするprops:
+
+|Name|Type|Description
+|:--:|:-----|:-----|
+|**`title`**|array|テーブルタイトル。
+|**`columns`**|array|テーブルヘッダー。文字列の配列または、オプションを含むオブジェクト。
+|**`data`**|array|テーブルデータ。文字列の配列。
+|**`options`**|object|テーブル機能の制御を設定。下記オプション項目を参照。
+
+#### Options:
+|Name|Type|Default|Description
+|:--:|:-----|:--|:-----|
+|**`filterType `**|string|'dropdown'|フィルタリングタイプを指定。 "checkbox"、"dropdown"、"multiselect"の3種類
+|**`textLabels `**|object||ラベルを指定。
+|**`pagination`**|boolean|true|ページネーション機能の有効・無効。
+|**`selectableRows`**|boolean|true|行選択機能の有効・無効。
+|**`caseSensitive `**|boolean|false|検索アクション実行時、大文字と小文字の区別の有効・無効。
+|**`responsive`**|string|'stacked'|ヘッダーのタイプを指定。 "stacked"、"scroll"の2種類
+|**`rowsPerPage`**|number|10|1ページ当たりの最大表示行数。
+|**`rowsPerPageOptions`**|array|[10,15,20]|表示行数選択項目。
+|**`rowHover`**|boolean|true|行のホバー有効・無効。
+|**`sortFilterList`**|boolean|true|フィルタリストのソート有効・無効。
+|**`sort`**|boolean|true|列のソート有効・無効。
+|**`filter`**|boolean|true|フィルターアイコン表示の有効・無効。
+|**`search`**|boolean|true|検索アイコン表示の有効・無効。
+|**`print`**|boolean|true|プリントアイコン表示の有効・無効。
+|**`download`**|boolean|true|ダウンロードアイコン表示の有効・無効。
+|**`onRowsSelect`**|function||行選択実行後の後続処理を設定。
+|**`onRowsDelete`**|function||行削除実行後の後続処理を設定。
+|**`onChangePage`**|function||ページネーション実行後の後続処理を設定。
+|**`onChangeRowsPerPage`**|function||表示行数変更後の後続処理を設定。
+|**`onSearchChange`**|function||検索実行後の後続処理を設定。
+|**`onFilterChange`**|function||フィルター設定変更時の後続処理を設定。
+|**`onColumnSortChange`**|function||ソート実行時の後続処理を設定。
+|**`onColumnViewChange`**|function||表示カラムの変更後の後続処理を設定。
