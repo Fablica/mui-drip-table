@@ -22,6 +22,10 @@
   },
   "author": "Kento75",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kento75/mui-drip-table.git"
+  },
   "devDependencies": {
     "@material-ui/core": "^1.0.0-rc.0",
     "@material-ui/icons": "^1.0.0-rc.0",
