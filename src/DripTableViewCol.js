@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/** material-ui */
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import FormControl from "@material-ui/core/FormControl";
@@ -7,6 +9,7 @@ import FormGroup from "@material-ui/core/FormGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 export const defaultViewColStyles = {
   root: {
     padding: "16px 24px 16px 24px",
@@ -42,13 +45,9 @@ export const defaultViewColStyles = {
 
 class DripTableViewCol extends React.Component {
   static propTypes = {
-    /** Columns used to describe table */
     columns: PropTypes.array.isRequired,
-    /** Options used to describe table */
     options: PropTypes.object.isRequired,
-    /** Callback to trigger View column update */
     onColumnUpdate: PropTypes.func,
-    /** Extend the style applied to components */
     classes: PropTypes.object,
   };
 

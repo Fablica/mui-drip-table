@@ -11,13 +11,9 @@ import DripPopoverTarget from "./DripPopoverTarget";
 
 class DripPopover extends React.Component {
   static propTypes = {
-    /** Show indicating arrow. default: true */
     arrow: PropTypes.bool,
-    /** Reference callback to handleRequestClose() to trigger manual close of DripPopover */
     refClose: PropTypes.func,
-    /** Reference callback to onExited() to trigger manual close of DripPopover */
     refExit: PropTypes.func,
-    /** DripPopoverTarget and DripPopoverContent are required children */
     children: (props, propName, componentName) => {
       let childMatch = true;
       const expectedComponents = [DripPopoverContent, DripPopoverTarget];
@@ -46,19 +42,12 @@ class DripPopover extends React.Component {
   }
 
   componentDidMount() {
-    /*
-     * expose close method to the parent
-     */
     if (this.props.refClose) {
       this.props.refClose(this.handleRequestClose);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    /*  
-     * Update Popover position if a filter removes data from the table because
-     * it affects the window height which would cause the Popover to in the wrong place
-     */
     if (this.state.open === true) {
       this.anchorEl = findDOMNode(this.anchorEl);
       this.popoverActions.updatePosition();

@@ -17,11 +17,8 @@ const defaultFilterListStyles = {
 
 class DripTableFilterList extends React.Component {
   static propTypes = {
-    /** Data used to filter table against */
     filterList: PropTypes.array.isRequired,
-    /** Callback to trigger filter update */
     onFilterUpdate: PropTypes.func,
-    /** Extend the style applied to components */
     classes: PropTypes.object,
   };
 

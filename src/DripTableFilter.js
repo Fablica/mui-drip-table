@@ -110,17 +110,11 @@ export const defaultFilterStyles = {
 
 class DripTableFilter extends React.Component {
   static propTypes = {
-    /** Data used to populate filter dropdown/checkbox */
     filterData: PropTypes.array.isRequired,
-    /** Data selected to be filtered against dropdown/checkbox */
     filterList: PropTypes.array.isRequired,
-    /** Options used to describe table */
     options: PropTypes.object.isRequired,
-    /** Callback to trigger filter update */
     onFilterUpdate: PropTypes.func,
-    /** Callback to trigger filter reset */
     onFilterRest: PropTypes.func,
-    /** Extend the style applied to components */
     classes: PropTypes.object,
   };
 

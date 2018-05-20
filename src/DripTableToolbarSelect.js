@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+/** material-ui */
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import Tooltip from "@material-ui/core/Tooltip";
@@ -7,6 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { withStyles } from "@material-ui/core/styles";
 
+/** デフォルトスタイル */
 const defaultToolbarSelectStyles = {
   root: {
     backgroundColor: "#f7f7f7",
@@ -39,13 +42,9 @@ const defaultToolbarSelectStyles = {
  */
 class DripTableToolbarSelect extends React.Component {
   static propTypes = {
-    /** Options used to describe table */
     options: PropTypes.object.isRequired,
-    /** Current row selected or not */
     rowSelected: PropTypes.bool,
-    /** Callback to trigger selected rows delete */
     onRowsDelete: PropTypes.func,
-    /** Extend the style applied to components */
     classes: PropTypes.object,
   };
 

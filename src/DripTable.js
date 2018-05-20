@@ -112,6 +112,7 @@ class DripTable extends React.Component {
     className: PropTypes.string,
   };
 
+  /** デフォルト設定 */
   static defaultProps = {
     title: "",
     options: {},
@@ -119,6 +120,7 @@ class DripTable extends React.Component {
     columns: [],
   };
 
+  /** テーブル初期値 */
   state = {
     open: false,
     announceText: null,
@@ -264,10 +266,7 @@ class DripTable extends React.Component {
     }));
   }
 
-  /*
-   *  
-   */
-
+  /** 行の表示・非表示設定 */
   isRowDisplayed(columns, row, filterList, searchText) {
     let isFiltered = false,
       isSearchFound = false;
