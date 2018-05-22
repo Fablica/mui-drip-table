@@ -513,7 +513,7 @@ class DripTable extends React.Component {
 
     // オプションに処理を設定している場合、後続処理を実行
     if (this.options.onRowsDelete) {
-      this.options.onRowsDelete(this.state.selectedRows);
+      this.options.onRowsDelete(this.state.displayData, this.state.selectedRows);
     }
 
     // 行選択フラグにfalseを設定
