@@ -1,6 +1,8 @@
 # mui-drip-table
 ### material-uiを使用したフルスタックなテーブルコンポーネント
 
+[![Build Status](https://travis-ci.org/Kento75/mui-drip-table.svg?branch=master)](https://travis-ci.org/Kento75/mui-drip-table)
+[![Coverage Status](https://coveralls.io/repos/github/Kento75/mui-drip-table/badge.svg?branch=master)](https://coveralls.io/github/Kento75/mui-drip-table?branch=master)
 *****
 
 ### インストール
