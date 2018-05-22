@@ -156,12 +156,12 @@ describe("<DripTable />", function() {
 
   it("should correctly build internal rowsPerPageOptions when provided in options", () => {
     const options = {
-      rowsPerPageOptions: [5, 10, 15],
+      rowsPerPageOptions: [ 5, 10, 15, 100 ],
     };
 
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} options={options} />);
     const state = shallowWrapper.dive().state();
-    assert.deepEqual(state.rowsPerPageOptions, [5, 10, 15]);
+    assert.deepEqual(state.rowsPerPageOptions, [ 5, 10, 15, 100 ]);
   });
 
   it("should render pagination when enabled in options", () => {
