@@ -28,7 +28,7 @@ npm install @material-ui/core @material-ui/icons
 
 *****
 ### 変更履歴
-・[CHENGE_LOG](https://github.com/Kento75/mui-drip-table/blob/master/CHANGE_LOG.md)
+・[CHENGE_LOG](https://github.com/Kento75/mui-drip-table/blob/master/Documents/CHANGE_LOG.md)
 *****
 
 ### 機能
@@ -76,7 +76,7 @@ npm install @material-ui/core @material-ui/icons
 |**`search`**|boolean|true|検索アイコン表示の有効・無効。
 |**`print`**|boolean|true|プリントアイコン表示の有効・無効。
 |**`download`**|boolean|true|ダウンロードアイコン表示の有効・無効。
-|**`onRowsSelect`**|function||行選択実行後の後続処理を設定。
+|**`onRowsSelect`**|function||行選択実行後の後続処理を設定。[詳細](https://github.com/Kento75/mui-drip-table/blob/master/Documents/ON_ROW_SELECT.md)
 |**`onRowsDelete`**|function||行削除実行後の後続処理を設定。
 |**`onChangePage`**|function||ページネーション実行後の後続処理を設定。
 |**`onChangeRowsPerPage`**|function||表示行数変更後の後続処理を設定。
