@@ -97,4 +97,4 @@ npm install @material-ui/core @material-ui/icons
 |**`display`**|boolean|true|カラム表示の有効・無効。
 |**`filter`**|boolean|true|フィルター機能の有効・無効。
 |**`sort`**|boolean|true|ソート機能の有効・無効。
-|**`customRender`**|function||ヘッダー表示時の処理を設定。
+|**`customRender`**|function||データの表示をカスタム。
