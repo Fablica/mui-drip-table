@@ -1,8 +1,12 @@
 # mui-drip-table
 ### material-uiを使用したフルスタックなテーブルコンポーネント
 
+[![NPM](https://nodei.co/npm/mui-drip-table.png?downloadRank=true)](https://nodei.co/npm/mui-drip-table/)  
+  
 [![Build Status](https://travis-ci.org/Kento75/mui-drip-table.svg?branch=master)](https://travis-ci.org/Kento75/mui-drip-table)
 [![Coverage Status](https://coveralls.io/repos/github/Kento75/mui-drip-table/badge.svg?branch=master)](https://coveralls.io/github/Kento75/mui-drip-table?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3cc7acde48e8d7e4b807/maintainability)](https://codeclimate.com/github/Kento75/mui-drip-table/maintainability)
+[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 *****
 
 ### インストール
@@ -22,6 +26,9 @@ npm install @material-ui/core @material-ui/icons
   
 ・[sample code](https://github.com/Kento75/mui-drip-table-demo)
 
+*****
+### 変更履歴
+・[CHENGE_LOG](https://github.com/Kento75/mui-drip-table/blob/master/CHANGE_LOG.md)
 *****
 
 ### 機能
