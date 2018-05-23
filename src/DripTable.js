@@ -508,25 +508,25 @@ class DripTable extends React.Component {
    * 行選択時ツールバーに設定するfunc
    */
   selectRowDelete = () => {
-    // 選択行リストのインデックスデータを利用データから除外
-    const cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
-
-    // オプションに処理を設定している場合、後続処理を実行
+    // オプションに処理を設定している場合、オプションのDeleteFuncの実行
     if (this.options.onRowsDelete) {
       this.options.onRowsDelete(this.state.displayData, this.state.selectedRows);
+      // オプションが設定されていない場合、デフォルトのDeleteFuncの実行
+    } else {
+      // 選択行リストのインデックスデータを利用データから除外
+      const cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
+      // 行選択フラグにfalseを設定
+      this.updateToolbarSelect(false);
+
+      // データの更新
+      this.setTableData({
+        columns: this.props.columns,
+        data: cleanRows,
+        options: {
+          filterList: this.state.filterList,
+        },
+      });
     }
-
-    // 行選択フラグにfalseを設定
-    this.updateToolbarSelect(false);
-
-    // データの更新
-    this.setTableData({
-      columns: this.props.columns,
-      data: cleanRows,
-      options: {
-        filterList: this.state.filterList,
-      },
-    });
   };
 
   selectRowUpdate = (type, value) => {
@@ -591,7 +591,7 @@ class DripTable extends React.Component {
         // 処理を実装している場合、処理を実行
         () => {
           if (this.options.onRowsSelect) {
-            this.options.onRowsSelect(this.state.curSelectedRows, this.state.selectedRows);
+            this.options.onRowsSelect(this.state.displayData, this.state.curSelectedRows, this.state.selectedRows);
           }
         },
       );
@@ -615,7 +615,7 @@ class DripTable extends React.Component {
         },
         () => {
           if (this.options.onRowsSelect) {
-            this.options.onRowsSelect([value], this.state.selectedRows);
+            this.options.onRowsSelect(this.state.displayData, [value], this.state.selectedRows);
           }
         },
       );
