@@ -98,3 +98,8 @@ npm install @material-ui/core @material-ui/icons
 |**`filter`**|boolean|true|フィルター機能の有効・無効。
 |**`sort`**|boolean|true|ソート機能の有効・無効。
 |**`customRender`**|function||データの表示をカスタム。
+
+*****
+#### テーブルスタイルのカスタマイズ  
+
+・[詳細](https://github.com/Kento75/mui-drip-table/blob/master/Documents/CUSTOMIZE_STYLING.md)
