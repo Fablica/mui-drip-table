@@ -560,13 +560,12 @@ class DripTable extends React.Component {
           let filteredList = [];
           if (filteringFlg) {
             displayDataList.forEach(function(rowValue) {
-              console.log("行データ：" + rowValue);
-              prevState.data.forEach(function(rawData, i) {
-                console.log("bool：" + (rawData.toString() == rowValue.toString()));
-                console.log("フィルタリングリスト：" + filteredList);
-                if (rawData.toString() == rowValue.toString()) filteredList.push(i);
+              prevState.data.forEach(function(rowData, i) {
+                if (rowData.toString() == rowValue.toString()) filteredList.push(i);
               });
             });
+            // 取得データのインデックスから重複を排除
+            filteredList = Object.keys(filteredList.reduce((r, x)=>(r[x]=1, r), {})).map(x=>+x);
           }
 
           // 新しい選択行リスト
