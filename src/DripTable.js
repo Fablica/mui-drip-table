@@ -565,7 +565,7 @@ class DripTable extends React.Component {
               });
             });
             // 取得データのインデックスから重複を排除
-            filteredList = Object.keys(filteredList.reduce((r, x)=>(r[x]=1, r), {})).map(x=>+x);
+            filteredList = Object.keys(filteredList.reduce((r, x) => ((r[x] = 1), r), {})).map(x => +x);
           }
 
           // 新しい選択行リスト
