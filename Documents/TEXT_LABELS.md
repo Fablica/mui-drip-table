@@ -46,4 +46,5 @@ const options = {
 *****
 ### デモページ
 
-・[demo](https://kento75.github.io/mui-drip-table-demo4)
+・[demo](https://kento75.github.io/mui-drip-table-demo4)  
+・[sample code](https://github.com/Kento75/mui-drip-table-demo4)
