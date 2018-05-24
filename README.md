@@ -62,7 +62,7 @@ npm install @material-ui/core @material-ui/icons
 |Name|Type|Default|Description
 |:--:|:-----|:--|:-----|
 |**`filterType `**|string|'dropdown'|フィルタリングタイプを指定。 "checkbox"、"dropdown"、"multiselect"の3種類
-|**`textLabels `**|object||ラベルを指定。
+|**`textLabels `**|object||ラベルを指定。[詳細](https://github.com/Kento75/mui-drip-table/blob/master/Documents/TEXT_LABELS.md)
 |**`pagination`**|boolean|true|ページネーション機能の有効・無効。
 |**`selectableRows`**|boolean|true|行選択機能の有効・無効。
 |**`caseSensitive `**|boolean|false|検索アクション実行時、大文字と小文字の区別の有効・無効。
