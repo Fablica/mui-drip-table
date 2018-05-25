@@ -3,9 +3,10 @@
 
 [![NPM](https://nodei.co/npm/mui-drip-table.png?downloadRank=true)](https://nodei.co/npm/mui-drip-table/)  
   
+![](https://img.shields.io/npm/dt/mui-drip-table.svg)
 [![Build Status](https://travis-ci.org/Kento75/mui-drip-table.svg?branch=master)](https://travis-ci.org/Kento75/mui-drip-table)
 [![Coverage Status](https://coveralls.io/repos/github/Kento75/mui-drip-table/badge.svg?branch=master)](https://coveralls.io/github/Kento75/mui-drip-table?branch=master)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3cc7acde48e8d7e4b807/maintainability)](https://codeclimate.com/github/Kento75/mui-drip-table/maintainability)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f19109696df44b1abe64cdb33ff86b00)](https://www.codacy.com/app/Kento75/mui-drip-table?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kento75/mui-drip-table&amp;utm_campaign=Badge_Grade)
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 *****
 
