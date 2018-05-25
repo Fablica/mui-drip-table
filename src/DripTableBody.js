@@ -1,11 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-/** material-ui */
 import Typography from "@material-ui/core/Typography";
 import TableBody from "@material-ui/core/TableBody";
-
-/** custom */
 import DripTableBodyCell from "./DripTableBodyCell";
 import DripTableBodyRow from "./DripTableBodyRow";
 import DripTableSelectCell from "./DripTableSelectCell";

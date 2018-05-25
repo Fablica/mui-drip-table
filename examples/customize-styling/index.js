@@ -85,7 +85,6 @@ class Example extends React.Component {
         <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
       </MuiThemeProvider>
     );
-
   }
 }
 

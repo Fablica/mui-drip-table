@@ -40,7 +40,6 @@ class Example extends React.Component {
       }      
     ];
 
-
     const data = [
       ["Gabby George", "Business Analyst", "Minneapolis", 30, "$100,000"],
       ["Aiden Lloyd", "Business Consultant", "Dallas",  55, "$200,000"],
@@ -83,7 +82,6 @@ class Example extends React.Component {
     return (
       <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
     );
-
   }
 }
 

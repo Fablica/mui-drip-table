@@ -1,11 +1,7 @@
 import React from "react";
 import { findDOMNode } from "react-dom";
 import PropTypes from "prop-types";
-
-/** material-ui */
 import Popover from "@material-ui/core/Popover";
-
-/** custom */
 import DripPopoverContent from "./DripPopoverContent";
 import DripPopoverTarget from "./DripPopoverTarget";
 
@@ -114,7 +110,6 @@ class DripPopover extends React.Component {
         popoverRender.push(targetContent);
       }
     });
-
     return popoverRender;
   }
 }

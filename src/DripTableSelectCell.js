@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-/** material-ui */
 import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
 import { withStyles } from "@material-ui/core/styles";

@@ -47,35 +47,11 @@ class Example extends React.Component {
       filterType: 'dropdown',
       responsive: 'stacked',
       rowsPerPage: 10,
-/*
-      onRowsSelect: (rowsSelected, allRows) => {
-        console.log(rowsSelected, allRows);
-      },
-      onRowsDelete: (rowsDeleted) => {
-        console.log(rowsDeleted, "were deleted!");
-      },
-      onChangePage: (numberRows) => {
-        console.log(numberRows);
-      },
-      onSearchChange: (searchText) => {
-        console.log(searchText);
-      },
-      onColumnSortChange: (column, direction) => {
-        console.log(column, direction);
-      },
-      onColumnViewChange: (column, action) => {
-        console.log(column, action);
-      },
-      onFilterChange: (column, filters) => {
-        console.log(column, filters);
-      }
-*/
     };
 
     return (
       <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
     );
-
   }
 }
 

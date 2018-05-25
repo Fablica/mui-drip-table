@@ -12,8 +12,6 @@ import PrintIcon from "@material-ui/icons/Print";
 import ViewColumnIcon from "@material-ui/icons/ViewColumn";
 import FilterIcon from "@material-ui/icons/FilterList";
 import merge from "lodash.merge";
-
-/** custom */
 import { DripPopover, DripPopoverTarget, DripPopoverContent } from "./DripPopover";
 import DripTableFilter from "./DripTableFilter";
 import DripTableViewCol from "./DripTableViewCol";

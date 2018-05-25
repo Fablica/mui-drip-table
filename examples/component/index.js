@@ -114,7 +114,6 @@ class Example extends React.Component {
     return (
       <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
     );
-
   }
 }
 

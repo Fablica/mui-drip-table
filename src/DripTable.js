@@ -1,19 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-/** material-ui */
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import { withStyles } from "@material-ui/core/styles";
-
-/** custom */
 import DripTableToolbar from "./DripTableToolbar";
 import DripTableToolbarSelect from "./DripTableToolbarSelect";
 import DripTableFilterList from "./DripTableFilterList";
 import DripTableBody from "./DripTableBody";
 import DripTableHead from "./DripTableHead";
 import DripTablePagination from "./DripTablePagination";
-
 import cloneDeep from "lodash.clonedeep";
 import merge from "lodash.merge";
 import textLabels from "./textLabels";

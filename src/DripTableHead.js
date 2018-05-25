@@ -1,11 +1,7 @@
 import React from "react";
 import classNames from "classnames";
-
-/** material-ui */
 import TableHead from "@material-ui/core/TableHead";
 import { withStyles } from "@material-ui/core/styles";
-
-/** custom */
 import DripTableHeadRow from "./DripTableHeadRow";
 import DripTableHeadCell from "./DripTableHeadCell";
 import DripTableSelectCell from "./DripTableSelectCell";
