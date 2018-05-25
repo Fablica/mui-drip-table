@@ -80,36 +80,8 @@ class Example extends React.Component {
       }
     ];
 
-    const data = [
-      ["Robin Duncan", "Business Analyst", "Los Angeles", 20, 77000, false],
-      ["Mel Brooks", "Business Consultant", "Oklahoma City", 37, 135000, true],
-      ["Harper White", "Attorney", "Pittsburgh", 52, 420000, false],
-      ["Kris Humphrey", "Agency Legal Counsel", "Laredo", 30, 150000, true],
-      ["Frankie Long", "Industrial Analyst", "Austin", 31, 170000, false],
-      ["Brynn Robbins", "Business Analyst", "Norfolk", 22, 90000, true],
-      ["Justice Mann", "Business Consultant", "Chicago", 24, 133000, false],
-      ["Addison Navarro", "Business Management Analyst", "New York", 50, 295000, true],
-      ["Jesse Welch", "Agency Legal Counsel", "Seattle", 28, 200000, false],
-      ["Eli Mejia", "Commercial Specialist", "Long Beach", 65, 400000, true],
-      ["Gene Leblanc", "Industrial Analyst", "Hartford", 34, 110000, false],
-      ["Danny Leon", "Computer Scientist", "Newark", 60, 220000, true],
-      ["Lane Lee", "Corporate Counselor", "Cincinnati", 52, 180000, false],
-      ["Jesse Hall", "Business Analyst", "Baltimore", 44, 99000, true],
-      ["Danni Hudson", "Agency Legal Counsel", "Tampa", 37, 90000, false],
-      ["Terry Macdonald", "Commercial Specialist", "Miami", 39, 140000, true],
-      ["Justice Mccarthy", "Attorney", "Tucson", 26, 330000, false],
-      ["Silver Carey", "Computer Scientist", "Memphis", 47, 250000, true],
-      ["Franky Miles", "Industrial Analyst", "Buffalo", 49, 190000, false],
-      ["Glen Nixon", "Corporate Counselor", "Arlington", 44, 80000, true],
-      ["Gabby Strickland", "Business Process Consultant", "Scottsdale", 26, 45000, false],
-      ["Mason Ray", "Computer Scientist", "San Francisco", 39, 142000, true]
-    ];
-
-    const options = {
-      filter: true,
-      filterType: 'dropdown',
-      responsive: 'scroll',
-    };
+    const data = [["Robin Duncan", "Business Analyst", "Los Angeles", 20, 77000, false], ["Mel Brooks", "Business Consultant", "Oklahoma City", 37, 135000, true], ["Harper White", "Attorney", "Pittsburgh", 52, 420000, false], ["Kris Humphrey", "Agency Legal Counsel", "Laredo", 30, 150000, true], ["Frankie Long", "Industrial Analyst", "Austin", 31, 170000, false], ["Brynn Robbins", "Business Analyst", "Norfolk", 22, 90000, true], ["Justice Mann", "Business Consultant", "Chicago", 24, 133000, false], ["Addison Navarro", "Business Management Analyst", "New York", 50, 295000, true], ["Jesse Welch", "Agency Legal Counsel", "Seattle", 28, 200000, false], ["Eli Mejia", "Commercial Specialist", "Long Beach", 65, 400000, true], ["Gene Leblanc", "Industrial Analyst", "Hartford", 34, 110000, false], ["Danny Leon", "Computer Scientist", "Newark", 60, 220000, true], ["Lane Lee", "Corporate Counselor", "Cincinnati", 52, 180000, false], ["Jesse Hall", "Business Analyst", "Baltimore", 44, 99000, true], ["Danni Hudson", "Agency Legal Counsel", "Tampa", 37, 90000, false], ["Terry Macdonald", "Commercial Specialist", "Miami", 39, 140000, true], ["Justice Mccarthy", "Attorney", "Tucson", 26, 330000, false], ["Silver Carey", "Computer Scientist", "Memphis", 47, 250000, true], ["Franky Miles", "Industrial Analyst", "Buffalo", 49, 190000, false], ["Glen Nixon", "Corporate Counselor", "Arlington", 44, 80000, true], ["Gabby Strickland", "Business Process Consultant", "Scottsdale", 26, 45000, false], ["Mason Ray", "Computer Scientist", "San Francisco", 39, 142000, true]];
+    const options = { filter: true, filterType: 'dropdown', responsive: 'scroll', };
 
     return (
       <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />

@@ -150,7 +150,6 @@ class DripTableToolbar extends React.Component {
       title,
       tableRef,
     } = this.props;
-
     const { search, downloadCsv, print, viewColumns, filterTable } = options.textLabels.toolbar;
     const { showSearch } = this.state;
 

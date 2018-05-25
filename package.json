@@ -17,7 +17,7 @@
     "coverage": "cross-env NODE_ENV=test nyc --reporter=lcov --reporter=text mocha --require babel-register test/*.js && nyc report --reporter=html | cat coverage/lcov.info | coveralls",
     "coverage:html": "cross-env NODE_ENV=test nyc check-coverage --lines 55 --reporter=html --reporter=text mocha --require babel-register test/*.js && nyc report --reporter=html",
     "prettier": "find src/ docs/ test/ -type f -name \"*.js\" ! -path \"*/.next/*\" | xargs prettier --write",
-    "lint": "eslint src",
+    "lint": "eslint src && eslint examples",
     "build": "cross-env NODE_ENV=production npm run prettier && rollup -c"
   },
   "author": "Kento75",
