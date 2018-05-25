@@ -131,6 +131,7 @@ class DripTable extends React.Component {
     columns: [],
     filterData: [],
     filterList: [],
+    selectAllFlg: false,
     selectedRows: [],
     showResponsive: false,
     searchText: null,
@@ -199,7 +200,7 @@ class DripTable extends React.Component {
 
   /**  テーブルデータ設定 */
   setTableData(props) {
-    const { data, columns, options } = props;
+    const { data, columns, options, selectAllFlg } = props;
 
     let columnData = [],
       filterData = [],
@@ -260,6 +261,7 @@ class DripTable extends React.Component {
       columns: columnData,
       filterData: filterData,
       filterList: filterList,
+      selectAllFlg: selectAllFlg,
       selectedRows: [],
       data: data,
       displayData: this.getDisplayData(columnData, data, filterList, prevState.searchText),
@@ -492,6 +494,7 @@ class DripTable extends React.Component {
 
         return {
           filterList: filterList,
+          selectAllFlg: false,
           displayData: this.getDisplayData(prevState.columns, prevState.data, filterList, prevState.searchText),
         };
       },
@@ -522,6 +525,7 @@ class DripTable extends React.Component {
       this.setTableData({
         columns: this.props.columns,
         data: cleanRows,
+        selectAllFlg: false,
         options: {
           filterList: this.state.filterList,
         },
@@ -585,6 +589,7 @@ class DripTable extends React.Component {
           return {
             curSelectedRows: selectedRows,
             selectedRows: newRows,
+            selectAllFlg: value,
           };
         },
         // 処理を実装している場合、処理を実行
@@ -664,6 +669,7 @@ class DripTable extends React.Component {
       filterData,
       filterList,
       rowsPerPage,
+      selectAllFlg,
       selectedRows,
       searchText,
     } = this.state;
@@ -707,6 +713,7 @@ class DripTable extends React.Component {
               columns={columns}
               page={page}
               rowsPerPage={rowsPerPage}
+              selectAllFlg={selectAllFlg}
               selectedRows={selectedRows}
               selectRowUpdate={this.selectRowUpdate}
               options={this.options}

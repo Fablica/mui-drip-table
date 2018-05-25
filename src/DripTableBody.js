@@ -29,6 +29,8 @@ class DripTableBody extends React.Component {
     options: PropTypes.object.isRequired,
     /** フィルター一覧 */
     filterList: PropTypes.array,
+    /** 全件選択フラグ */
+    selectAllFlg: PropTypes.bool,
     /** 選択行一覧 */
     selectedRows: PropTypes.array,
     /** 行選択実行時、更新処理 */
@@ -95,8 +97,8 @@ class DripTableBody extends React.Component {
    * @param {number} index rowsインデックスを取得
    */
   isRowSelected(index) {
-    const { selectedRows } = this.props;
-    return selectedRows.indexOf(this.getRowIndex(index)) >= 0 ? true : false;
+    const { selectedRows, selectAllFlg } = this.props;
+    return selectAllFlg ? true : selectedRows.indexOf(this.getRowIndex(index)) >= 0 ? true : false;
   }
 
   /**

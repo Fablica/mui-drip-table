@@ -47,6 +47,7 @@ class Example extends React.Component {
       filterType: 'dropdown',
       responsive: 'stacked',
       rowsPerPage: 10,
+/*
       onRowsSelect: (rowsSelected, allRows) => {
         console.log(rowsSelected, allRows);
       },
@@ -68,6 +69,7 @@ class Example extends React.Component {
       onFilterChange: (column, filters) => {
         console.log(column, filters);
       }
+*/
     };
 
     return (
