@@ -1,12 +1,45 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import DripTable from "../../src/";
+import { createMuiTheme, MuiThemeProvider, withStyles } from 'material-ui/styles';
 
 class Example extends React.Component {
 
   render() {
 
-    const columns = ["Name", "Title", "Location", "Age", "Salary"];
+    const columns = [
+      {
+        name: "Name",
+        options: {
+          filter: true,
+        }
+      },      
+      {
+        name: "Title",
+        options: {
+          filter: true,
+        }
+      },
+      {
+        name: "Location",
+        options: {
+          filter: false,
+        }
+      },
+      {
+        name: "Age",
+        options: {
+          filter: true,
+        }
+      },
+      {
+        name: "Salary",
+        options: {
+          filter: true,
+          sort: false
+        }
+      }      
+    ];
 
     const data = [
       ["Gabby George", "Business Analyst", "Minneapolis", 30, 100000],
@@ -43,37 +76,14 @@ class Example extends React.Component {
 
     const options = {
       filter: true,
-      selectableRows: true,
       filterType: 'dropdown',
       responsive: 'stacked',
-      rowsPerPage: 10,
-/*
-      onRowsSelect: (rowsSelected, allRows) => {
-        console.log(rowsSelected, allRows);
-      },
-      onRowsDelete: (rowsDeleted) => {
-        console.log(rowsDeleted, "were deleted!");
-      },
-      onChangePage: (numberRows) => {
-        console.log(numberRows);
-      },
-      onSearchChange: (searchText) => {
-        console.log(searchText);
-      },
-      onColumnSortChange: (column, direction) => {
-        console.log(column, direction);
-      },
-      onColumnViewChange: (column, action) => {
-        console.log(column, action);
-      },
-      onFilterChange: (column, filters) => {
-        console.log(column, filters);
-      }
-*/
     };
 
     return (
-      <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
+      <MuiThemeProvider theme={this.getMuiTheme()}>
+        <DripTable title={"ACME Employee list"} data={data} columns={columns} options={options} />
+      </MuiThemeProvider>
     );
 
   }
