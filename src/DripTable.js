@@ -594,22 +594,24 @@ class DripTable extends React.Component {
           }
         },
       );
+    // TODO
+    // 【No.5】全件選択状態での不具合、行選択時の画面チェックが消えない
     } else if (type === "cell") {
       this.setState(
         prevState => {
           let selectedRows = [...prevState.selectedRows];
           const rowPos = selectedRows.indexOf(value);
 
-          /** 行選択リストに存在する場合、リストから削除 */
+          /** 行選択リストに存在かつ全件選択されていない場合、リストから削除 */
           if (rowPos >= 0) {
-            selectedRows.splice(rowPos, 1);
+              selectedRows.splice(rowPos, 1);
             /** 行選択リストに存在しない場合、リストに追加 */
           } else {
             selectedRows.push(value);
           }
-
           return {
             selectedRows: selectedRows,
+            selectAllFlg: false,
           };
         },
         () => {
