@@ -56,7 +56,7 @@ describe("<DripTableFilter />", function() {
     );
 
     const actualResult = shallowWrapper.find(Checkbox);
-    assert.strictEqual(actualResult.length, 4);
+    assert.strictEqual(actualResult.length, 13);
   });
 
   // フィルタモード(checkbox)、カラムフィルタ無効、フィルタリスト要素数の整合性チェック

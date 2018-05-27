@@ -110,7 +110,7 @@ describe("<DripTableBody />", function() {
     );
 
     const actualResult = mountWrapper.find(DripTableSelectCell);
-    assert.strictEqual(actualResult, false);
+    assert.strictEqual(actualResult, 0);
   });
 
   // 行選択時(存在する)、選択行の配列の要素数チェック
