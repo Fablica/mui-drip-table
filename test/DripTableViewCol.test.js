@@ -17,6 +17,7 @@ describe("<DripTableViewCol />", function() {
     };
   });
 
+  // カラム表示動作チェック
   it("should render view columns", () => {
     const mountWrapper = mount(<DripTableViewCol columns={columns} options={options} />);
 
@@ -24,6 +25,7 @@ describe("<DripTableViewCol />", function() {
     assert.strictEqual(actualResult.length, 4);
   });
 
+  // カラムアップデート動作チェック
   it("should trigger onColumnUpdate prop callback when calling method handleColChange", () => {
     const onColumnUpdate = spy();
 

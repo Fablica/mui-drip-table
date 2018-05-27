@@ -15,6 +15,7 @@ describe("<DripTableHeadCell />", function() {
     };
   });
 
+  // ソートオプション有効時、ヘッダーセル動作チェック
   it("should render a table head cell with sort label when options.sort = true provided", () => {
     const options = { sort: true, textLabels };
     const toggleSort = () => {};
@@ -29,6 +30,7 @@ describe("<DripTableHeadCell />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // ソートオプション無効時、ヘッダーセル動作チェック
   it("should render a table head cell without sort label when options.sort = false provided", () => {
     const options = { sort: false, textLabels };
     const toggleSort = () => {};
@@ -43,6 +45,7 @@ describe("<DripTableHeadCell />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // ソート実行動作チェック
   it("should trigger toggleSort prop callback when calling method handleSortClick", () => {
     const options = { sort: true, textLabels };
     const toggleSort = spy();

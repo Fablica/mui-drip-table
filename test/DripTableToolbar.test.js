@@ -36,12 +36,14 @@ describe("<DripTableToolbar />", function() {
     ];
   });
 
+  // ツールバー動作チェック
   it("should render a toolbar", () => {
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={options} />);
     const actualResult = mountWrapper.find(IconButton);
     assert.strictEqual(actualResult.length, 5);
   });
 
+  // オプションチェック(検索=false)
   it("should render a toolbar with no search icon if option.search = false", () => {
     const newOptions = { ...options, search: false };
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={newOptions} />);
@@ -49,6 +51,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // オプションチェック(ダウンロード=false)
   it("should render a toolbar with no download icon if option.download = false", () => {
     const newOptions = { ...options, download: false };
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={newOptions} />);
@@ -56,6 +59,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // オプションチェック(印刷=false)
   it("should render a toolbar with no print icon if option.print = false", () => {
     const newOptions = { ...options, print: false };
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={newOptions} />);
@@ -63,6 +67,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // オプションチェック(カラム表示・非表示選択=false)
   it("should render a toolbar with no view columns icon if option.viewColumns = false", () => {
     const newOptions = { ...options, viewColumns: false };
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={newOptions} />);
@@ -70,6 +75,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // オプションチェック(フィルターリスト=false)
   it("should render a toolbar with no filter icon if option.filter = false", () => {
     const newOptions = { ...options, filter: false };
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={newOptions} />);
@@ -77,6 +83,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // オプションチェック(検索ボックス表示=false)
   it("should render a toolbar with a search clicking search icon", () => {
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={options} />);
     const instance = mountWrapper.instance();
@@ -88,6 +95,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // 検索キャンセル実行時、動作チェック
   it("should hide search after clicking cancel icon", () => {
     const searchTextUpdate = () => {};
     const mountWrapper = mount(
@@ -110,6 +118,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // フィルターアイコン表示動作チェック
   it("should set icon when calling method setActiveIcon", () => {
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={options} />);
     const instance = mountWrapper.instance();
@@ -121,6 +130,7 @@ describe("<DripTableToolbar />", function() {
     assert.strictEqual(state.iconActive, "filter");
   });
 
+  // ダウンロード実行時、動作チェック
   it("should download CSV when calling method handleCSVDownload", () => {
     const mountWrapper = mount(<DripTableToolbar columns={columns} data={data} options={options} />);
     const instance = mountWrapper.instance();

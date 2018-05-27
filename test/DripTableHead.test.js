@@ -21,6 +21,7 @@ describe("<DripTableHead />", function() {
     handleHeadUpdateRef = () => {};
   });
 
+  // ヘッダーカラム要素数整合性チェック
   it("should render a table head", () => {
     const options = {};
     const toggleSort = () => {};
@@ -37,6 +38,7 @@ describe("<DripTableHead />", function() {
     assert.strictEqual(actualResult.length, 4);
   });
 
+  // ヘッダーセルが存在しない場合のチェック
   it("should render a table head with no cells", () => {
     const options = {};
     const toggleSort = () => {};
@@ -54,6 +56,7 @@ describe("<DripTableHead />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // ソート実行時の整合性チェック
   it("should trigger toggleSort prop callback when calling method handleToggleColumn", () => {
     const options = { sort: true };
     const toggleSort = spy();
@@ -76,6 +79,7 @@ describe("<DripTableHead />", function() {
     assert.strictEqual(toggleSort.callCount, 1);
   });
 
+  // 行選択時(セル)、整合性チェック
   it("should trigger selectRowUpdate prop callback and selectChecked state update when calling method handleRowSelect", () => {
     const options = { sort: true, selectableRows: true };
     const rowSelectUpdate = spy();

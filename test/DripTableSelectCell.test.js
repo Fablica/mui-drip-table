@@ -8,6 +8,7 @@ import DripTableSelectCell from "../src/DripTableSelectCell";
 describe("<DripTableSelectCell />", function() {
   before(() => {});
 
+  // テーブルセル動作チェック
   it("should render table select cell", () => {
     const mountWrapper = mount(<DripTableSelectCell checked={false} />);
 
@@ -15,6 +16,7 @@ describe("<DripTableSelectCell />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // チェックボックス動作チェック
   it("should render table select cell checked", () => {
     const mountWrapper = mount(<DripTableSelectCell checked={true} />);
 
@@ -22,6 +24,7 @@ describe("<DripTableSelectCell />", function() {
     assert.strictEqual(actualResult.props().checked, true);
   });
 
+  // チェックボックス動作チェック(選択解除)
   it("should render table select cell unchecked", () => {
     const mountWrapper = mount(<DripTableSelectCell checked={false} />);
 

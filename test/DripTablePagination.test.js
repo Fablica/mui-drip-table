@@ -18,6 +18,7 @@ describe("<DripTablePagination />", function() {
     };
   });
 
+  // ページネーション動作チェック
   it("should render a table footer with pagination", () => {
     const mountWrapper = mount(<DripTablePagination options={options} count={100} page={1} rowsPerPage={10} />);
 
@@ -25,6 +26,7 @@ describe("<DripTablePagination />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // 表示行数変更時、動作チェック
   it("should trigger changeRowsPerPage prop callback when calling method handleRowChange", () => {
     const changeRowsPerPage = spy();
     const shallowWrapper = shallow(
@@ -42,6 +44,7 @@ describe("<DripTablePagination />", function() {
     assert.strictEqual(changeRowsPerPage.callCount, 1);
   });
 
+  // ページ変更時、動作チェック
   it("should trigger changePage prop callback when calling method handlePageChange", () => {
     const changePage = spy();
     const shallowWrapper = shallow(

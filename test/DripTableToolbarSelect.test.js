@@ -9,6 +9,7 @@ import textLabels from "../src/textLabels";
 describe("<DripTableSelectCell />", function() {
   before(() => {});
 
+  // 削除アイコン表示、動作確認
   it("should render table toolbar select", () => {
     const onRowsDelete = () => {};
     const mountWrapper = mount(

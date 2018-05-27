@@ -19,6 +19,7 @@ describe("<DripTableSearch />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // 検索ボックス動作チェック
   it("should trigger handleTextChange prop callback when calling method handleTextChange", () => {
     const options = { onSearchChange: () => true, textLabels };
     const onSearch = spy();
@@ -32,6 +33,7 @@ describe("<DripTableSearch />", function() {
     assert.strictEqual(onSearch.callCount, 1);
   });
 
+  // ESCキー押下時、検索ボックス非表示、動作チェック
   it("should hide the search bar when hitting the ESCAPE key", () => {
     const options = { textLabels };
     const onHide = spy();
@@ -42,6 +44,7 @@ describe("<DripTableSearch />", function() {
     assert.strictEqual(onHide.callCount, 1);
   });
 
+  // ESC以外のキー(Enter)押下時、検索ボックス表示維持、動作チェック
   it("should hide not hide search bar when entering anything but the ESCAPE key", () => {
     const options = { textLabels };
     const onHide = spy();

@@ -41,6 +41,7 @@ describe("<DripTable />", function() {
     renderName = renderName;
   });
 
+  // テーブルレンダリング
   it("should render a table", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     assert.strictEqual(
@@ -52,6 +53,7 @@ describe("<DripTable />", function() {
     );
   });
 
+  // 列データ構造チェック
   it("should correctly build internal columns data structure", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const actualResult = shallowWrapper.dive().state().columns;
@@ -73,6 +75,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(actualResult, expectedResult);
   });
 
+  // テーブルデータと表示データの整合性チェック
   it("should correctly build internal table data and displayData structure", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const state = shallowWrapper.dive().state();
@@ -80,6 +83,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(JSON.stringify(state.displayData), displayData);
   });
 
+  // テーブルデータ(データ変更後)と表示データの再表示時の整合性チェック
   it("should correctly re-build internal table data and displayData structure with prop change", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     let state = shallowWrapper.dive().state();
@@ -87,7 +91,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.data, data);
     assert.deepEqual(JSON.stringify(state.displayData), displayData);
 
-    // now use updated props
+    // データ更新
     let newData = data.map(item => [...item]);
     newData[0][0] = "testing";
     shallowWrapper.setProps({ data: newData });
@@ -104,6 +108,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.data, expectedResult);
   });
 
+  // テーブルデータ(データの変更なし)と表示データの整合性チェック
   it("should not re-build internal table data and displayData structure with no prop change to data or columns", () => {
     const initializeTableSpy = spy(DripTable.Naked.prototype, "initializeTable");
     const mountWrapper = mount(shallow(<DripTable columns={columns} data={data} />).get(0));
@@ -112,7 +117,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.data, data);
     assert.deepEqual(JSON.stringify(state.displayData), displayData);
 
-    // now update props with no change
+    // 更新しない
     mountWrapper.setProps({});
     mountWrapper.update();
 
@@ -122,6 +127,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(initializeTableSpy.callCount, 1);
   });
 
+  // フィルタリスト整合性チェック
   it("should correctly build internal filterList structure", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const state = shallowWrapper.dive().state();
@@ -130,6 +136,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, expectedResult);
   });
 
+  // フィルタリング動作チェック
   it("should correctly build internal unique column data for filterData structure", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const state = shallowWrapper.dive().state();
@@ -143,6 +150,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterData, expectedResult);
   });
 
+  // 表示行数設定時、整合性チェック
   it("should correctly build internal rowsPerPage when provided in options", () => {
     const options = {
       rowsPerPage: 20,
@@ -154,6 +162,7 @@ describe("<DripTable />", function() {
     assert.strictEqual(state.rowsPerPage, 20);
   });
 
+  // 表示行数リスト設定時、整合性チェック
   it("should correctly build internal rowsPerPageOptions when provided in options", () => {
     const options = {
       rowsPerPageOptions: [5, 10, 15, 100],
@@ -164,6 +173,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.rowsPerPageOptions, [5, 10, 15, 100]);
   });
 
+  // ページネーション設定時(有効)、整合性チェック
   it("should render pagination when enabled in options", () => {
     const options = {
       pagination: true,
@@ -174,6 +184,7 @@ describe("<DripTable />", function() {
     assert.lengthOf(actualResult, 1);
   });
 
+  // ページネーション設定時(無効)、整合性チェック
   it("should not render pagination when disabled in options", () => {
     const options = {
       pagination: false,
@@ -184,6 +195,7 @@ describe("<DripTable />", function() {
     assert.lengthOf(actualResult, 0);
   });
 
+  // フィルタモード設定時(checkbox)、フィルタリング値の整合性チェック
   it("should properly set internal filterList when calling filterUpdate method with type=checkbox", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const table = shallowWrapper.dive();
@@ -195,6 +207,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, [["Joe James"], [], [], []]);
   });
 
+  // フィルタモード設定時(checkbox)、フィルタリング値を再選択(チェックを外す)時の整合性チェック
   it("should remove entry from filterList when calling filterUpdate method with type=checkbox and same arguments a second time", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const table = shallowWrapper.dive();
@@ -212,6 +225,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, [[], [], [], []]);
   });
 
+  // フィルタモード設定時(dropdown)、フィルタリング値の整合性チェック
   it("should properly set internal filterList when calling filterUpdate method with type=dropdown", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const table = shallowWrapper.dive();
@@ -223,6 +237,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, [["Joe James"], [], [], []]);
   });
 
+  // フィルタ選択時、フィルタチップの作成チェック
   it("should create Chip when filterList is populated", () => {
     const filterList = [["Joe James"], [], [], []];
 
@@ -231,6 +246,7 @@ describe("<DripTable />", function() {
     assert.strictEqual(actualResult.length, 1);
   });
 
+  // フィルタモード設定時(dropdown)、フィルタリング値を再選択(チェックを外す)時の整合性チェック
   it("should remove entry from filterList when calling filterUpdate method with type=dropdown and same arguments a second time", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const table = shallowWrapper.dive();
@@ -248,6 +264,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, [[], [], [], []]);
   });
 
+  // フィルタ選択状態(checkbox、値あり)で、フィルタリセット選択時の整合性チェック
   it("should properly reset internal filterList when calling resetFilters method", () => {
     // set a filter
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
@@ -266,6 +283,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.filterList, [[], [], [], []]);
   });
 
+  // 検索ボックス値選択時、表示データとの整合性チェック
   it("should properly set searchText when calling searchTextUpdate method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
     const table = shallowWrapper.dive();
@@ -280,6 +298,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(JSON.stringify(state.displayData), expectedResult);
   });
 
+  // カラムソート実行時、整合性チェック
   it("should sort provided column when calling toggleSortColum method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -298,6 +317,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(JSON.stringify(state.displayData), expectedResult);
   });
 
+  // 表示・非表示選択かつ、カラムソート実行時、整合性チェック
   it("should toggle provided column when calling toggleViewCol method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -323,6 +343,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.columns, expectedResult);
   });
 
+  // 生成データと表示データの整合性チェック
   it("should get displayable data when calling getDisplayData method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -339,6 +360,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(actualResult, expectedResult);
   });
 
+  // 表示行数変更時、整合性チェック
   it("should update rowsPerPage when calling changeRowsPerPage method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -350,6 +372,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.rowsPerPage, 10);
   });
 
+  // ページ遷移時、整合性チェック
   it("should update page position when calling changePage method", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -361,6 +384,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.page, 2);
   });
 
+  // 行選択時(ヘッダー、全件選択)、整合性チェック
   it("should update selectedRows when calling selectRowUpdate method with type=head", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -372,6 +396,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.selectedRows, [0, 1, 2, 3]);
   });
 
+  // 行選択時(セル)、整合性チェック
   it("should update selectedRows when calling selectRowUpdate method with type=cell", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -383,6 +408,7 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.selectedRows, [0]);
   });
 
+  // カスタムレンダー設定時、整合性チェック
   it("should update value when calling updateValue method in customRender", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();

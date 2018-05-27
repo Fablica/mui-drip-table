@@ -20,6 +20,7 @@ describe("<DripTableBody />", function() {
     ];
   });
 
+  // 行選択無効時、整合性チェック
   it("should render a table body with no selectable cells if selectableRows = false", () => {
     const options = { selectableRows: false };
     const selectRowUpdate = () => {};
@@ -42,6 +43,8 @@ describe("<DripTableBody />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // データが存在しない場合、整合性チェック
+  // 文言チェック
   it("should render a table body with no records if no data provided", () => {
     const options = { selectableRows: false, textLabels };
     const selectRowUpdate = () => {};
@@ -64,6 +67,7 @@ describe("<DripTableBody />", function() {
     assert.include(actualResult, "Sorry, no matching records found");
   });
 
+  // 行選択有効時、整合性チェック
   it("should render a table body with selectable cells if selectableRows = true", () => {
     const options = { selectableRows: true };
     const selectRowUpdate = () => {};
@@ -86,6 +90,30 @@ describe("<DripTableBody />", function() {
     assert.strictEqual(actualResult.length, 4);
   });
 
+  // 行選択無効時、整合性チェック
+  it("should render a table body with selectable cells if selectableRows = true", () => {
+    const options = { selectableRows: false };
+    const selectRowUpdate = () => {};
+
+    const mountWrapper = mount(
+      <DripTableBody
+        data={data}
+        columns={columns}
+        page={0}
+        rowsPerPage={10}
+        selectedRows={[]}
+        selectRowUpdate={selectRowUpdate}
+        options={options}
+        searchText={""}
+        filterList={[]}
+      />,
+    );
+
+    const actualResult = mountWrapper.find(DripTableSelectCell);
+    assert.strictEqual(actualResult.length, 4);
+  });
+
+  // 行選択時(存在する)、選択行の配列の要素数チェック
   it("should return the correct rowIndex when calling instance method getRowIndex", () => {
     const options = { sort: true, selectableRows: true };
     const selectRowUpdate = () => {};
@@ -110,6 +138,7 @@ describe("<DripTableBody />", function() {
     assert.strictEqual(actualResult, 4);
   });
 
+  // 行選択時(存在しない)、選択行の配列のfalseチェック
   it("should return correctly if row exists in selectedRows when calling instance method isRowSelected", () => {
     const options = { sort: true, selectableRows: true };
     const selectRowUpdate = () => {};
@@ -134,6 +163,7 @@ describe("<DripTableBody />", function() {
     assert.strictEqual(actualResult, false);
   });
 
+  // 行選択時、更新データ数チェック
   it("should trigger selectRowUpdate prop callback when calling method handleRowSelect", () => {
     const options = { sort: true, selectableRows: true };
     const selectRowUpdate = spy();
