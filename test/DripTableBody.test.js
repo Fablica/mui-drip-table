@@ -91,7 +91,7 @@ describe("<DripTableBody />", function() {
   });
 
   // 行選択無効時、整合性チェック
-  it("should render a table body with selectable cells if selectableRows = true", () => {
+  it("should render a table body with selectable cells if selectableRows = false", () => {
     const options = { selectableRows: false };
     const selectRowUpdate = () => {};
 
@@ -110,7 +110,7 @@ describe("<DripTableBody />", function() {
     );
 
     const actualResult = mountWrapper.find(DripTableSelectCell);
-    assert.strictEqual(actualResult.length, 4);
+    assert.strictEqual(actualResult, false);
   });
 
   // 行選択時(存在する)、選択行の配列の要素数チェック
