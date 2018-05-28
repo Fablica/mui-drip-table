@@ -126,7 +126,6 @@ class DripTable extends React.Component {
     columns: [],
     filterData: [],
     filterList: [],
-    selectAllFlg: false,
     selectedRows: [],
     showResponsive: false,
     searchText: null,
@@ -195,7 +194,7 @@ class DripTable extends React.Component {
 
   /**  テーブルデータ設定 */
   setTableData(props) {
-    const { data, columns, options, selectAllFlg } = props;
+    const { data, columns, options } = props;
 
     let columnData = [],
       filterData = [],
@@ -256,7 +255,6 @@ class DripTable extends React.Component {
       columns: columnData,
       filterData: filterData,
       filterList: filterList,
-      selectAllFlg: selectAllFlg,
       selectedRows: [],
       data: data,
       displayData: this.getDisplayData(columnData, data, filterList, prevState.searchText),
@@ -489,7 +487,6 @@ class DripTable extends React.Component {
 
         return {
           filterList: filterList,
-          selectAllFlg: false,
           displayData: this.getDisplayData(prevState.columns, prevState.data, filterList, prevState.searchText),
         };
       },
@@ -511,8 +508,37 @@ class DripTable extends React.Component {
       this.options.onRowsDelete(this.state.displayData, this.state.selectedRows);
       // オプションが設定されていない場合、デフォルトのDeleteFuncの実行
     } else {
-      // 選択行リストのインデックスデータを利用データから除外
-      const cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
+      // 削除実行後データリスト
+      let cleanRows = [];
+      // フィルタリングされている場合
+      if(this.state.filterList.length >= 1) {
+        // 選択行リストのコピーを作成(ループ処理用)
+        const copySelectedRows = this.state.selectedRows.slice();
+        
+        // 選択行のデータリストを生成
+        let selectedDataList = [];
+        this.state.displayData.forEach(function(rowData, rowIndex) {
+          copySelectedRows.forEach(function(selectedIndex) {
+            if(rowIndex === selectedIndex) selectedDataList.push(rowData);
+          });
+        });
+        // 選択行データリストの全件データでのインデックス値を取得
+        let selectedDataIndexList = [];
+        this.state.data.forEach(function(rowData, dataIndex) {
+          for(let i = 0; i < selectedDataList.length; i++) {
+            if(rowData.toString() === selectedDataList[i].toString()) {
+              selectedDataIndexList.push(dataIndex);
+              selectedDataList.splice(i,1);
+              break;
+            }
+          }
+        });
+        cleanRows = this.state.data.filter((_, index) => selectedDataIndexList.indexOf(index) === -1);
+      } else {
+        // 選択行リストのインデックスデータを利用データから除外
+        cleanRows = this.state.data.filter((_, index) => this.state.selectedRows.indexOf(index) === -1);
+      }
+
       // 行選択フラグにfalseを設定
       this.updateToolbarSelect(false);
 
@@ -520,7 +546,6 @@ class DripTable extends React.Component {
       this.setTableData({
         columns: this.props.columns,
         data: cleanRows,
-        selectAllFlg: false,
         options: {
           filterList: this.state.filterList,
         },
@@ -558,9 +583,16 @@ class DripTable extends React.Component {
           // フィルタリングされた値でリストを作成
           let filteredList = [];
           if (filteringFlg) {
+            let num = 0;
             displayDataList.forEach(function(rowValue) {
               prevState.data.forEach(function(rowData, i) {
-                if (rowData.toString() == rowValue.toString()) filteredList.push(i);
+                if (rowData.toString() == rowValue.toString()) {
+                  if((i - 1) === -1) {
+                    filteredList.push(0);
+                  } else {
+                    filteredList.push(i);
+                  }
+                }
               });
             });
             // 取得データのインデックスから重複を排除
@@ -584,7 +616,6 @@ class DripTable extends React.Component {
           return {
             curSelectedRows: selectedRows,
             selectedRows: newRows,
-            selectAllFlg: value,
           };
         },
         // 処理を実装している場合、処理を実行
@@ -594,8 +625,6 @@ class DripTable extends React.Component {
           }
         },
       );
-    // TODO
-    // 【No.5】全件選択状態での不具合、行選択時の画面チェックが消えない
     } else if (type === "cell") {
       this.setState(
         prevState => {
@@ -611,7 +640,6 @@ class DripTable extends React.Component {
           }
           return {
             selectedRows: selectedRows,
-            selectAllFlg: false,
           };
         },
         () => {
@@ -666,7 +694,6 @@ class DripTable extends React.Component {
       filterData,
       filterList,
       rowsPerPage,
-      selectAllFlg,
       selectedRows,
       searchText,
     } = this.state;
@@ -706,11 +733,10 @@ class DripTable extends React.Component {
               options={this.options}
             />
             <DripTableBody
-              data={this.state.displayData}
+              displayData={this.state.displayData}
               columns={columns}
               page={page}
               rowsPerPage={rowsPerPage}
-              selectAllFlg={selectAllFlg}
               selectedRows={selectedRows}
               selectRowUpdate={this.selectRowUpdate}
               options={this.options}

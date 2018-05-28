@@ -18,15 +18,13 @@ const defaultBodyStyles = {
 class DripTableBody extends React.Component {
   static propTypes = {
     /** 使用データ */
-    data: PropTypes.array.isRequired,
+    displayData: PropTypes.array.isRequired,
     /** カラム一覧 */
     columns: PropTypes.array.isRequired,
     /** オプション一覧 */
     options: PropTypes.object.isRequired,
     /** フィルター一覧 */
     filterList: PropTypes.array,
-    /** 全件選択フラグ */
-    selectAllFlg: PropTypes.bool,
     /** 選択行一覧 */
     selectedRows: PropTypes.array,
     /** 行選択実行時、更新処理 */
@@ -39,11 +37,11 @@ class DripTableBody extends React.Component {
 
   /** 行作成処理 */
   buildRows() {
-    const { data, page, rowsPerPage } = this.props;
+    const { displayData, page, rowsPerPage } = this.props;
 
     let rows = [];
     /** 合計ページ数(切り上) */
-    const totalPages = Math.floor(data.length / rowsPerPage);
+    const totalPages = Math.floor(displayData.length / rowsPerPage);
     /**
      * 現在のページ
      * 表示ページ × 表示行数 = 表示するデータのインデックス(from)
@@ -53,7 +51,7 @@ class DripTableBody extends React.Component {
      * 次ページ
      * 表示ページ × 表示行数 = 表示するデータのインデックス(to)
      */
-    const toIndex = Math.min(data.length, (page + 1) * rowsPerPage);
+    const toIndex = Math.min(displayData.length, (page + 1) * rowsPerPage);
 
     if (page > totalPages && totalPages !== 0) {
       throw new Error(
@@ -69,15 +67,15 @@ class DripTableBody extends React.Component {
      * 行作成
      * 使用データのインデックス(from) 〜 インデックス(to)までのデータを取得
      */
-    for (let rowIndex = fromIndex; rowIndex < data.length && rowIndex < toIndex; rowIndex++) {
-      rows.push(data[rowIndex]);
+    for (let rowIndex = fromIndex; rowIndex < displayData.length && rowIndex < toIndex; rowIndex++) {
+      rows.push(displayData[rowIndex]);
     }
 
     return rows.length ? rows : null;
   }
 
   /**
-   * rowsデータのdata内でのインデックスを取得
+   * rowsデータのdisplayData内でのインデックスを取得
    * @param {number} index rowsインデックスを取得
    */
   getRowIndex(index) {
@@ -93,8 +91,8 @@ class DripTableBody extends React.Component {
    * @param {number} index rowsインデックスを取得
    */
   isRowSelected(index) {
-    const { selectedRows, selectAllFlg } = this.props;
-    return selectAllFlg ? true : selectedRows.indexOf(this.getRowIndex(index)) >= 0 ? true : false;
+    const { selectedRows } = this.props;
+    return selectedRows.indexOf(this.getRowIndex(index)) >= 0 ? true : false;
   }
 
   /**
