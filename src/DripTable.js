@@ -511,24 +511,24 @@ class DripTable extends React.Component {
       // 削除実行後データリスト
       let cleanRows = [];
       // フィルタリングされている場合
-      if(this.state.filterList.length >= 1) {
+      if (this.state.filterList.length >= 1) {
         // 選択行リストのコピーを作成(ループ処理用)
         const copySelectedRows = this.state.selectedRows.slice();
-        
+
         // 選択行のデータリストを生成
         let selectedDataList = [];
         this.state.displayData.forEach(function(rowData, rowIndex) {
           copySelectedRows.forEach(function(selectedIndex) {
-            if(rowIndex === selectedIndex) selectedDataList.push(rowData);
+            if (rowIndex === selectedIndex) selectedDataList.push(rowData);
           });
         });
         // 選択行データリストの全件データでのインデックス値を取得
         let selectedDataIndexList = [];
         this.state.data.forEach(function(rowData, dataIndex) {
-          for(let i = 0; i < selectedDataList.length; i++) {
-            if(rowData.toString() === selectedDataList[i].toString()) {
+          for (let i = 0; i < selectedDataList.length; i++) {
+            if (rowData.toString() === selectedDataList[i].toString()) {
               selectedDataIndexList.push(dataIndex);
-              selectedDataList.splice(i,1);
+              selectedDataList.splice(i, 1);
               break;
             }
           }
@@ -587,7 +587,7 @@ class DripTable extends React.Component {
             displayDataList.forEach(function(rowValue, i) {
               prevState.data.forEach(function(rowData) {
                 if (rowData.toString() == rowValue.toString()) {
-                  if((i - 1) === -1) {
+                  if (i - 1 === -1) {
                     filteredList.push(0);
                   } else {
                     filteredList.push(i);
@@ -633,7 +633,7 @@ class DripTable extends React.Component {
 
           /** 行選択リストに存在かつ全件選択されていない場合、リストから削除 */
           if (rowPos >= 0) {
-              selectedRows.splice(rowPos, 1);
+            selectedRows.splice(rowPos, 1);
             /** 行選択リストに存在しない場合、リストに追加 */
           } else {
             selectedRows.push(value);
