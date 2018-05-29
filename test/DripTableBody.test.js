@@ -7,19 +7,19 @@ import DripTableBody from "../src/DripTableBody";
 import DripTableSelectCell from "../src/DripTableSelectCell";
 
 describe("<DripTableBody />", function() {
-  let data;
+  let displayData;
   let columns;
 
   before(() => {
     columns = ["First Name", "Company", "City", "State"];
-    data = [
+    displayData = [
       ["Joe James", "Test Corp", "Yonkers", "NY"],
       ["John Walsh", "Test Corp", "Hartford", "CT"],
       ["Bob Herm", "Test Corp", "Tampa", "FL"],
       ["James Houston", "Test Corp", "Dallas", "TX"],
     ];
   });
-  /*
+
   // 行選択無効時、整合性チェック
   it("should render a table body with no selectable cells if selectableRows = false", () => {
     const options = { selectableRows: false };
@@ -27,7 +27,7 @@ describe("<DripTableBody />", function() {
 
     const mountWrapper = mount(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={0}
         rowsPerPage={10}
@@ -51,7 +51,7 @@ describe("<DripTableBody />", function() {
 
     const mountWrapper = mount(
       <DripTableBody
-        data={[]}
+        displayData={[]}
         columns={columns}
         page={0}
         rowsPerPage={10}
@@ -74,7 +74,7 @@ describe("<DripTableBody />", function() {
 
     const mountWrapper = mount(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={0}
         rowsPerPage={10}
@@ -97,7 +97,7 @@ describe("<DripTableBody />", function() {
 
     const mountWrapper = mount(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={0}
         rowsPerPage={10}
@@ -120,11 +120,11 @@ describe("<DripTableBody />", function() {
 
     const shallowWrapper = shallow(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={1}
         rowsPerPage={2}
-        selectedRows={[1, 2, 3]}
+        selectedRows={[0, 1, 2]}
         selectRowUpdate={selectRowUpdate}
         options={options}
         searchText={""}
@@ -145,11 +145,11 @@ describe("<DripTableBody />", function() {
 
     const shallowWrapper = shallow(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={0}
         rowsPerPage={15}
-        selectedRows={[1, 2, 3]}
+        selectedRows={[0, 1, 2]}
         selectRowUpdate={selectRowUpdate}
         options={options}
         searchText={""}
@@ -170,7 +170,7 @@ describe("<DripTableBody />", function() {
 
     const shallowWrapper = shallow(
       <DripTableBody
-        data={data}
+        displayData={displayData}
         columns={columns}
         page={0}
         rowsPerPage={10}
@@ -188,5 +188,4 @@ describe("<DripTableBody />", function() {
 
     assert.strictEqual(selectRowUpdate.callCount, 1);
   });
-*/
 });
