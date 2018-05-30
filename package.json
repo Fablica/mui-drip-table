@@ -1,6 +1,6 @@
 {
   "name": "mui-drip-table",
-  "version": "0.1.11",
+  "version": "0.2.0",
   "description": "material-uiを使用したフルスタックなテーブルライブラリ",
   "main": "dist/index.js",
   "files": [
