@@ -443,6 +443,11 @@ class DripTable extends React.Component {
     );
   };
 
+  /**
+   * 検索ボックス入力時処理
+   * 検索文字列でデータリストをフィルタリング
+   */
+  //TODO【No.5】全件選択時不具合
   searchTextUpdate = text => {
     this.setState(prevState => ({
       searchText: text && text.length ? text : null,
@@ -582,7 +587,7 @@ class DripTable extends React.Component {
           // フィルタリングされている場合、
           // フィルタリングされた値でリストを作成
           let filteredList = [];
-          if (filteringFlg) {
+          if (filteringFlg || (this.state.searchText.length != null)) {
             let num = 0;
             displayDataList.forEach(function(rowValue, i) {
               prevState.data.forEach(function(rowData) {
@@ -606,7 +611,7 @@ class DripTable extends React.Component {
             newRows = [];
 
             // フィルタリングしている場合、フィルタリングされたデータのみ
-          } else if (filteringFlg) {
+          } else if (filteringFlg || (this.state.searchText.length != null)) {
             newRows = filteredList;
 
             // フィルタリングしていない場合、全件
