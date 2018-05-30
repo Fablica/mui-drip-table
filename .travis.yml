@@ -6,6 +6,3 @@ script:
  - npm run -s lint
 # - npm run -s coverage
  - npm run -s build
-
-after_success:
-  - coveralls
