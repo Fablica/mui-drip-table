@@ -145,6 +145,7 @@ class DripTableToolbar extends React.Component {
       filterList,
       filterUpdate,
       resetFilters,
+      searchText,
       searchTextUpdate,
       toggleViewColumn,
       title,
@@ -159,7 +160,7 @@ class DripTableToolbar extends React.Component {
           <Toolbar className={toolbarStyles.root} role={"toolbar"} aria-label={"Table Toolbar"}>
             <div className={toolbarStyles.left}>
               {showSearch === true ? (
-                <DripTableSearch onSearch={searchTextUpdate} onHide={this.hideSearch} options={options} />
+                <DripTableSearch onSearch={searchTextUpdate} searchText={searchText} onHide={this.hideSearch} options={options} />
               ) : (
                 <div className={toolbarStyles.titleRoot} aria-hidden={"true"}>
                   <Typography variant="title" className={toolbarStyles.titleText}>
