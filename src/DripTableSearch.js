@@ -64,7 +64,7 @@ class DripTableSearch extends React.Component {
             InputProps={{
               "aria-label": options.textLabels.toolbar.search,
             }}
-            value={searchText != null ? searchText : ''}
+            value={searchText != null ? searchText : ""}
             onChange={this.handleTextChange}
             fullWidth={true}
             inputRef={el => (this.searchField = el)}

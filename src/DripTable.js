@@ -587,7 +587,7 @@ class DripTable extends React.Component {
           // フィルタリングされている場合、
           // フィルタリングされた値でリストを作成
           let filteredList = [];
-          if (filteringFlg || (this.state.searchText != null)) {
+          if (filteringFlg || this.state.searchText != null) {
             let num = 0;
             displayDataList.forEach(function(rowValue, i) {
               prevState.data.forEach(function(rowData) {
@@ -611,7 +611,7 @@ class DripTable extends React.Component {
             newRows = [];
 
             // フィルタリングしている場合、フィルタリングされたデータのみ
-          } else if (filteringFlg || (this.state.searchText != null)) {
+          } else if (filteringFlg || this.state.searchText != null) {
             newRows = filteredList;
 
             // フィルタリングしていない場合、全件
