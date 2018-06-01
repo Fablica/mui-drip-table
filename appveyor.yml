@@ -1,0 +1,47 @@
+# appveyor file
+# http://www.appveyor.com/docs/appveyor-yml
+
+install:
+  # Update Node.js
+  # 標準で入っている Node.js を更新
+  - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
+  - node --version
+
+  # Update NPM
+  - npm install -g npm
+  - npm --version
+
+  # Update node-gyp
+  # 必須! node-gyp のバージョンを上げ
+  - npm install -g node-gyp
+
+  # Install dependencies & devDependencies
+  # Visual Studio のバージョンを指定
+  - npm install --build-from-source --msvs_version=2013
+
+  # Install build tools
+  - npm install
+
+  # Build
+  - npm run -s build
+
+test_script:
+# テスト用のコマンドを指定します
+  - npm run -s lint
+  - npm run coverage-push
+
+environment:
+  matrix:
+    - nodejs_version: 0.10
+
+init:
+# git clone の際の改行を変換しない
+  - git config --global core.autocrlf false
+
+branches:
+# ビルドするブランチを制限する
+  only:
+    - master
+
+build: off
+deploy: off
