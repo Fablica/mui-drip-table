@@ -9,7 +9,6 @@ install:
 
   # Update NPM
   - npm install -g npm
-  - npm --version
 
   # Update node-gyp
   # 必須! node-gyp のバージョンを上げ
@@ -29,10 +28,6 @@ test_script:
 # テスト用のコマンドを指定します
   - npm run -s lint
   - npm run coverage-push
-
-environment:
-  matrix:
-    - nodejs_version: 0.10
 
 init:
 # git clone の際の改行を変換しない
