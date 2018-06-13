@@ -6,3 +6,6 @@ script:
  - npm run -s lint
 # - npm run -s coverage
  - npm run -s build
+
+notifications:
+    slack: kento75:s4XYtG22oWdRPtYihALclluJ
