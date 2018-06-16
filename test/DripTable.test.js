@@ -75,6 +75,31 @@ describe("<DripTable />", function() {
     assert.deepEqual(actualResult, expectedResult);
   });
 
+  // フィルターソート無効時、列データ構造チェック
+  it("should correctly build internal columns data structure", () => {
+    const options = {
+      sortFilterList: false,
+    };
+    const shallowWrapper = shallow(<DripTable columns={columns} data={data} options={options} />);
+    const actualResult = shallowWrapper.dive().state().columns;
+
+    const expectedResult = [
+      { display: true, name: "Name", sort: true, filter: true, sortDirection: null, customRender: renderName },
+      { display: true, name: "Company", sort: true, filter: true, sortDirection: null },
+      {
+        display: true,
+        name: "City",
+        sort: true,
+        filter: true,
+        sortDirection: null,
+        customRender: renderCities,
+      },
+      { display: true, name: "State", sort: true, filter: true, sortDirection: null },
+    ];
+
+    assert.deepEqual(actualResult, expectedResult);
+  });
+
   // テーブルデータと表示データの整合性チェック
   it("should correctly build internal table data and displayData structure", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />);
