@@ -73,6 +73,18 @@ describe("<DripTableFilter />", function() {
     assert.strictEqual(actualResult.length, 0);
   });
 
+  // フィルタモード(select)、フィルタリスト要素数の整合性チェック(onChange発火)
+  it("should data table filter view with checkboxes if filterType = 'select'", () => {
+    const options = { filterType: "select", textLabels };
+    const filterList = [["Joe James"], [], [], []];
+    const shallowWrapper = mount(
+      <DripTableFilter columns={columns} filterData={filterData} filterList={filterList} options={options} />,
+    );
+
+    const actualResult = shallowWrapper.find(Select);
+    assert.strictEqual(actualResult.length, 4);
+  });
+
   // フィルタモード(select)、フィルタリスト要素数の整合性チェック
   it("should data table filter view with selects if filterType = 'select'", () => {
     const options = { filterType: "select", textLabels };
