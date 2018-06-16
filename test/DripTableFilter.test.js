@@ -173,4 +173,30 @@ describe("<DripTableFilter />", function() {
     instance.handleDropdownChange(event, 0);
     assert.strictEqual(onFilterUpdate.callCount, 2);
   });
+
+  // フィルタモード(multiselect)、フィルタリスト更新時の整合性チェック
+  it("should trigger onFilterUpdate prop callback when calling method handleMultiselectChange", () => {
+    const options = { filterType: "multiselect", textLabels };
+    const filterList = [[], [], [], []];
+    const onFilterUpdate = spy();
+
+    const shallowWrapper = shallow(
+      <DripTableFilter
+        columns={columns}
+        onFilterUpdate={onFilterUpdate}
+        filterData={filterData}
+        filterList={filterList}
+        options={options}
+      />,
+    ).dive();
+    const instance = shallowWrapper.instance();
+
+    let event = { target: { value: "All" } };
+    instance.handleMultiselectChange(event, 0);
+    assert.strictEqual(onFilterUpdate.callCount, 1);
+
+    event = { target: { value: "test" } };
+    instance.handleMultiselectChange(event, 0);
+    assert.strictEqual(onFilterUpdate.callCount, 2);
+  });
 });
