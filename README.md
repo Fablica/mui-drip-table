@@ -5,7 +5,7 @@
 
 [![NPM](https://nodei.co/npm/mui-drip-table.png?downloadRank=true)](https://nodei.co/npm/mui-drip-table/)  
   
-![](https://img.shields.io/npm/dt/mui-drip-table.svg)
+![Downloads](https://img.shields.io/npm/dt/mui-drip-table.svg)
 [![Build Status](https://travis-ci.org/Kento75/mui-drip-table.svg?branch=master)](https://travis-ci.org/Kento75/mui-drip-table)
 [![Coverage Status](https://coveralls.io/repos/github/Kento75/mui-drip-table/badge.svg?branch=master)](https://coveralls.io/github/Kento75/mui-drip-table?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f19109696df44b1abe64cdb33ff86b00)](https://www.codacy.com/app/Kento75/mui-drip-table?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Kento75/mui-drip-table&amp;utm_campaign=Badge_Grade)
