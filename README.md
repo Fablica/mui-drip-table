@@ -2,8 +2,7 @@
   <img src="https://github.com/Kento75/mui-drip-table/blob/master/logo.png" />
 </div>
 
-# mui-drip-table
-### material-uiを使用したフルスタックなテーブルコンポーネント
+# mui-drip-table - material-uiを使用したフルスタックなテーブルコンポーネント -
 
 [![NPM](https://nodei.co/npm/mui-drip-table.png?downloadRank=true)](https://nodei.co/npm/mui-drip-table/)  
   
