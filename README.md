@@ -1,8 +1,10 @@
 <div align="center">
   <img src="https://github.com/Kento75/mui-drip-table/blob/master/logo.png" />
 </div>
+<div style="text-align: center;">
+  <h2>- material-uiを使用したフルスタックなテーブルコンポーネント -</h2>
+</div>
 
-## material-uiを使用したフルスタックなテーブルコンポーネント
 [![NPM](https://nodei.co/npm/mui-drip-table.png?downloadRank=true)](https://nodei.co/npm/mui-drip-table/)  
   
 ![](https://img.shields.io/npm/dt/mui-drip-table.svg)
