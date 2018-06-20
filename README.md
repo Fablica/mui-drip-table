@@ -1,7 +1,5 @@
 <div align="center">
   <img src="https://github.com/Kento75/mui-drip-table/blob/master/logo.png" />
-</div>
-<div style="text-align: center;">
   <h2>- material-uiを使用したフルスタックなテーブルコンポーネント -</h2>
 </div>
 
