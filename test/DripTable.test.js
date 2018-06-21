@@ -410,20 +410,6 @@ describe("<DripTable />", function() {
   });
 
   // 行選択時(ヘッダー、全件選択)、整合性チェック
-  it("should update selectedRows when calling selectRowUpdate method with type=head retry", () => {
-    const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
-    const instance = shallowWrapper.instance();
-
-    instance.selectRowUpdate("head", 0);
-    shallowWrapper.update();
-    instance.selectRowUpdate("head", false);
-    shallowWrapper.update();
-
-    const state = shallowWrapper.state();
-    assert.deepEqual(state.selectedRows, []);
-  });
-
-  // 行選択時(ヘッダー、フィルタリング有、全件選択)、整合性チェック
   it("should update selectedRows when calling selectRowUpdate method with type=head", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
     const instance = shallowWrapper.instance();
@@ -434,6 +420,20 @@ describe("<DripTable />", function() {
     const state = shallowWrapper.state();
     assert.deepEqual(state.selectedRows, [0, 1, 2, 3]);
  });
+
+  // 行選択時(ヘッダー、フィルタリング有、全件選択)、整合性チェック
+  it("should update selectedRows when calling selectRowUpdate method with type=head retry", () => {
+    const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
+    const instance = shallowWrapper.instance();
+
+    instance.selectRowUpdate("cell", 0);
+    shallowWrapper.update();
+    instance.selectRowUpdate("head", false);
+    shallowWrapper.update();
+
+    const state = shallowWrapper.state();
+    assert.deepEqual(state.selectedRows, []);
+  });
 
   // 行選択時(セル)、整合性チェック
   it("should update selectedRows when calling selectRowUpdate method with type=cell", () => {
