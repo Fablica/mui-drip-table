@@ -447,6 +447,21 @@ describe("<DripTable />", function() {
     assert.deepEqual(state.selectedRows, [0]);
   });
 
+  // 行選択時(セル、行選択済み)、整合性チェック
+  it("should update selectedRows when calling selectRowUpdate method with type=cell retry", () => {
+    const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
+    const instance = shallowWrapper.instance();
+
+    instance.selectRowUpdate("cell", 0);
+    shallowWrapper.update();
+
+    instance.selectRowUpdate("cell", 0);
+    shallowWrapper.update();
+
+    const state = shallowWrapper.state();
+    assert.deepEqual(state.selectedRows, []);
+  });
+
   // カスタムレンダー設定時、整合性チェック
   it("should update value when calling updateValue method in customRender", () => {
     const shallowWrapper = shallow(<DripTable columns={columns} data={data} />).dive();
