@@ -591,7 +591,7 @@ class DripTable extends React.Component {
             let num = 0;
             displayDataList.forEach(function(rowValue, i) {
               prevState.data.forEach(function(rowData) {
-                if (rowData.toString() == rowValue.toString()) {
+                if (rowData.toString() === rowValue.toString()) {
                   if (i - 1 === -1) {
                     filteredList.push(0);
                   } else {
