@@ -2,9 +2,15 @@ language: node_js
 node_js:
   - "node"
 
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+
 script: 
+ - bash server-run.sh &
  - npm run -s lint
-# - npm run -s coverage
+ - npm run -s test
  - npm run -s build
 
 notifications:
