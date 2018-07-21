@@ -2,10 +2,18 @@ language: node_js
 node_js:
   - "node"
 
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y libgconf-2-4
+  - sudo apt-get install -y xvfb
+
 script: 
- - npm run -s lint
-# - npm run -s coverage
- - npm run -s build
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+  - bash server-run.sh &
+  - npm run -s lint
+  - npm run -s test
+  - npm run -s build
 
 notifications:
-    slack: kento75:s4XYtG22oWdRPtYihALclluJ
+  slack: kento75:s4XYtG22oWdRPtYihALclluJ
