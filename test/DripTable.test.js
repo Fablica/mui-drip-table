@@ -419,7 +419,7 @@ describe("<DripTable />", function() {
 
     const state = shallowWrapper.state();
     assert.deepEqual(state.selectedRows, [0, 1, 2, 3]);
- });
+  });
 
   // 行選択時(ヘッダー、フィルタリング有、全件選択)、整合性チェック
   it("should update selectedRows when calling selectRowUpdate method with type=head retry", () => {
